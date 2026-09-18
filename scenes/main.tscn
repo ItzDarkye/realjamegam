@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://c6drg8ufoh285"]
 
 [ext_resource type="PackedScene" uid="uid://66map821y2" path="res://scenes/player.tscn" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://d21220ayfvvxw" path="res://scenes/enemy.tscn" id="1_tbgi4"]
+[ext_resource type="Texture2D" uid="uid://v2jy2wdbjkd3" path="res://sprites/terrain.png" id="1_tefeu"]
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_sugp2"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_jyhfs"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_jyhfs"]
@@ -10,7 +12,23 @@ script = ExtResource("3_jyhfs")
 
 [node name="Node2D" type="Node2D" unique_id=1927999117]
 
-[node name="CharacterBody2D" parent="." unique_id=501528392 instance=ExtResource("1_o5qli")]
+[node name="Terrain" type="Sprite2D" parent="." unique_id=1174053907]
+position = Vector2(-131, -641)
+texture = ExtResource("1_tefeu")
+
+[node name="Terrain" type="Sprite2D" parent="Terrain" unique_id=1855391447]
+position = Vector2(1000, 5)
+texture = ExtResource("1_tefeu")
+
+[node name="Terrain2" type="Sprite2D" parent="Terrain" unique_id=2039418301]
+position = Vector2(14, 994)
+texture = ExtResource("1_tefeu")
+
+[node name="Terrain" type="Sprite2D" parent="Terrain/Terrain2" unique_id=434227184]
+position = Vector2(986, 10)
+texture = ExtResource("1_tefeu")
+
+[node name="player" parent="." unique_id=501528392 instance=ExtResource("1_o5qli")]
 scale = Vector2(10, 10)
 velocity_coll = 500
 
@@ -18,8 +36,8 @@ velocity_coll = 500
 top_level = true
 script = ExtResource("2_sugp2")
 follow_mode = 5
-follow_target = NodePath("../CharacterBody2D")
-zoom = Vector2(0.5, 0.5)
+follow_target = NodePath("../player")
+zoom = Vector2(0.1, 0.1)
 tween_resource = SubResource("Resource_tbgi4")
 follow_damping = true
 follow_damping_value = Vector2(0.25, 0.25)
@@ -29,10 +47,15 @@ dead_zone_height = 0.516
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1381749005]
 physics_interpolation_mode = 1
 top_level = true
-zoom = Vector2(0.5, 0.5)
+zoom = Vector2(0.1, 0.1)
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D" unique_id=1222323502]
 process_priority = 300
 process_physics_priority = 300
 script = ExtResource("4_jyhfs")
 metadata/_custom_type_script = "uid://bd046eokvcnu2"
+
+[node name="enemy" parent="." unique_id=2026744539 instance=ExtResource("1_tbgi4")]
+position = Vector2(3000, 0)
+scale = Vector2(10, 10)
+tree_position = Vector2(20, -2000)
