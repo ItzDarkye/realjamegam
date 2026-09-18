@@ -3,7 +3,8 @@ extends CharacterBody2D
 func get_inputs():
 	var x_direction=Input.get_axis("move_left","move_right")
 	var y_direction=Input.get_axis("move_up","move_down")
-	velocity=Vector2(x_direction,y_direction)*50
+	velocity=Vector2(x_direction,y_direction)*150
+	
 	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
