@@ -13,10 +13,9 @@ script = ExtResource("1_g2els")
 shape = SubResource("RectangleShape2D_nhenn")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1847412603]
+texture_filter = 1
 texture = ExtResource("1_3vyb7")
 
 [node name="Health" type="Node" parent="." unique_id=859196682]
 script = ExtResource("3_qhqgy")
-max_health = null
-immortality = true
 metadata/_custom_type_script = "uid://c4ndxgqhic218"

@@ -6,4 +6,37 @@
 
 [node name="CharacterBody2D" parent="." unique_id=501528392 instance=ExtResource("1_o5qli")]
 
+<<<<<<< Updated upstream
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1715179457]
+=======
+[node name="PhantomCamera2D" type="Node2D" parent="." unique_id=1134445663 node_paths=PackedStringArray("follow_target")]
+top_level = true
+script = ExtResource("2_sugp2")
+follow_mode = 5
+follow_target = NodePath("../CharacterBody2D")
+zoom = Vector2(0.5, 0.5)
+tween_resource = SubResource("Resource_tbgi4")
+follow_damping = true
+follow_damping_value = Vector2(0.25, 0.25)
+dead_zone_width = 0.189
+dead_zone_height = 0.516
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1381749005]
+physics_interpolation_mode = 1
+top_level = true
+zoom = Vector2(0.5, 0.5)
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D" unique_id=1222323502]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("4_jyhfs")
+metadata/_custom_type_script = "uid://bd046eokvcnu2"
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=562553817]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD" unique_id=1886758732]
+offset_left = 104.0
+offset_top = -269.0
+offset_right = 360.0
+offset_bottom = -21.0
+>>>>>>> Stashed changes

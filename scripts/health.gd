@@ -7,7 +7,7 @@ signal health_changed(diff: int)
 signal health_depleted
 
 
-@export var max_health: int = 3 : set = set_max_health, get = get_max_health
+@export var max_health: int = 5 : set = set_max_health, get = get_max_health
 @export var immortality: bool = false : set = set_immortality, get = get_immortality
 
 var immortality_timer: Timer = null
@@ -20,7 +20,7 @@ func set_max_health(value: int):
 	
 	if not clamped_value == max_health:
 		var difference = clamped_value - max_health
-		max_health = value
+		max_health = clamped_value
 		max_health_changed.emit(difference)
 		
 		if health > max_health:
@@ -62,7 +62,7 @@ func set_health(value: int):
 	
 	if clamped_value != health:
 		var difference = clamped_value - health
-		health = value
+		health = clamped_value
 		health_changed.emit(difference)
 		
 		if health == 0:
