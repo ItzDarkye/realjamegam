@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://66map821y2"]
+
+[ext_resource type="Texture2D" uid="uid://bsg27bkj1f0ud" path="res://sprites/New Piskel-1.png (1).png" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://doamjwk1clhpj" path="res://scripts/basic_movement.gd" id="1_g2els"]
+[ext_resource type="Script" uid="uid://b8dqb1brw1i88" path="res://scripts/hp_system.gd" id="2_dqkch"]
+[ext_resource type="Script" uid="uid://kb4xs1grd85f" path="res://scripts/HUD.gd" id="4_qlg0r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nhenn"]
+
+[node name="player" type="CharacterBody2D" unique_id=501528392]
+script = ExtResource("1_g2els")
+
+[node name="health" type="Node" parent="." unique_id=2114623791]
+script = ExtResource("2_dqkch")
+metadata/_custom_type_script = "uid://b8dqb1brw1i88"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=870358834]
+shape = SubResource("RectangleShape2D_nhenn")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1847412603]
+texture = ExtResource("1_3vyb7")
+
+[node name="Timer" type="Timer" parent="." unique_id=1568131762]
+wait_time = 0.4
+one_shot = true
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1677148063]
+script = ExtResource("4_qlg0r")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
