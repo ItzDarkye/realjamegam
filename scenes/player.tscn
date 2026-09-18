@@ -11,6 +11,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nhenn"]
 
 [node name="player" type="CharacterBody2D" unique_id=501528392]
+collision_mask = 6
 script = ExtResource("1_g2els")
 
 [node name="health" type="Node" parent="." unique_id=2114623791]
