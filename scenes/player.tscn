@@ -7,6 +7,8 @@
 
 [node name="player" type="CharacterBody2D" unique_id=501528392]
 collision_mask = 6
+platform_on_leave = 2
+platform_floor_layers = 4294967293
 script = ExtResource("1_g2els")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=870358834]
