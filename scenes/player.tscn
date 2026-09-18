@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bsg27bkj1f0ud" path="res://sprites/New Piskel-1.png (1).png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://doamjwk1clhpj" path="res://scripts/basic_movement.gd" id="1_g2els"]
+[ext_resource type="Script" uid="uid://c4ndxgqhic218" path="res://scripts/health.gd" id="3_qhqgy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nhenn"]
 
