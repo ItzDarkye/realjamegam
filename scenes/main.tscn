@@ -1,9 +1,37 @@
 [gd_scene format=3 uid="uid://c6drg8ufoh285"]
 
 [ext_resource type="PackedScene" uid="uid://66map821y2" path="res://scenes/player.tscn" id="1_o5qli"]
+[ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_sugp2"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_jyhfs"]
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_jyhfs"]
+
+[sub_resource type="Resource" id="Resource_tbgi4"]
+script = ExtResource("3_jyhfs")
 
 [node name="Node2D" type="Node2D" unique_id=1927999117]
 
 [node name="CharacterBody2D" parent="." unique_id=501528392 instance=ExtResource("1_o5qli")]
+scale = Vector2(10, 10)
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1715179457]
+[node name="PhantomCamera2D" type="Node2D" parent="." unique_id=1134445663 node_paths=PackedStringArray("follow_target")]
+top_level = true
+script = ExtResource("2_sugp2")
+follow_mode = 5
+follow_target = NodePath("../CharacterBody2D")
+zoom = Vector2(0.5, 0.5)
+tween_resource = SubResource("Resource_tbgi4")
+follow_damping = true
+follow_damping_value = Vector2(0.25, 0.25)
+dead_zone_width = 0.189
+dead_zone_height = 0.516
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1381749005]
+physics_interpolation_mode = 1
+top_level = true
+zoom = Vector2(0.5, 0.5)
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D" unique_id=1222323502]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("4_jyhfs")
+metadata/_custom_type_script = "uid://bd046eokvcnu2"
