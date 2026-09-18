@@ -13,3 +13,9 @@ shape = SubResource("RectangleShape2D_nhenn")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1847412603]
 texture = ExtResource("1_3vyb7")
+
+[node name="Timer" type="Timer" parent="." unique_id=1568131762]
+wait_time = 0.4
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
