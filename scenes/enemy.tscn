@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://d21220ayfvvxw"]
+
+[ext_resource type="Texture2D" uid="uid://qbmehgxwnf4n" path="res://sprites/New Piskel-1.png (2).png" id="1_7p1mj"]
+[ext_resource type="Script" uid="uid://dopwoqv1wgkat" path="res://scripts/enemy_movement.gd" id="1_md0e3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nhenn"]
+size = Vector2(20, 21)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nhenn"]
+radius = 149.64
+
+[node name="enemy" type="CharacterBody2D" unique_id=2026744539]
+collision_layer = 2
+script = ExtResource("1_md0e3")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=275307339]
+texture = ExtResource("1_7p1mj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=307515526]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_nhenn")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=158296522]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1193530956]
+shape = SubResource("CircleShape2D_nhenn")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
