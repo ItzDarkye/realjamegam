@@ -8,7 +8,9 @@ func check_collision_whit_player():
 	var collider=get_last_slide_collision()
 	if collider:
 		if collider.get_collider().name=="player":
-			velocity=velocity.bounce(collider.get_normal())*50
+			
+			collider.get_collider().contact_enemy=true
+			collider.get_collider().bounce_velocity=-(global_position-collider.get_collider().global_position).normalized()*5000
 func follow_player():
 	var vector_direction_player: Vector2=(-global_position+player.global_position)
 	velocity=vector_direction_player.normalized()*200
