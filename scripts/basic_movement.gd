@@ -25,7 +25,8 @@ func get_inputs():
 	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	var max_health = $health.max_health
+	print(max_health)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
