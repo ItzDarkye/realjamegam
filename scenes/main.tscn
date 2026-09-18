@@ -12,6 +12,7 @@ script = ExtResource("3_jyhfs")
 
 [node name="CharacterBody2D" parent="." unique_id=501528392 instance=ExtResource("1_o5qli")]
 scale = Vector2(10, 10)
+velocity_coll = 500
 
 [node name="PhantomCamera2D" type="Node2D" parent="." unique_id=1134445663 node_paths=PackedStringArray("follow_target")]
 top_level = true
