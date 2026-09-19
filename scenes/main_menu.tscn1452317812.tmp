@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://0cusii8sx1vr"]
+
+[ext_resource type="Script" uid="uid://bmj2hpc3x1hk6" path="res://scripts/main_menu.gd" id="1_l6cm7"]
+
+[sub_resource type="GDScript" id="GDScript_ekxnf"]
+
+[node name="Main Menu" type="Node2D" unique_id=1536426179]
+script = ExtResource("1_l6cm7")
+
+[node name="Button_Manager" type="Control" parent="." unique_id=1674543418]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Options" type="Button" parent="Button_Manager" unique_id=753234617]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 27.0
+offset_right = 206.0
+offset_bottom = 58.0
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.35, 0.35)
+text = "Options"
+
+[node name="Start" type="Button" parent="Button_Manager" unique_id=423791851]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 13.0
+offset_right = 206.0
+offset_bottom = 44.0
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.35, 0.35)
+text = "Start Game"
+script = SubResource("GDScript_ekxnf")
+
+[node name="Quit" type="Button" parent="Button_Manager" unique_id=357083507]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 41.0
+offset_right = 206.0
+offset_bottom = 72.0
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.35, 0.35)
+text = "Quit"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=890610414]
+offset = Vector2(155.59, 42.425)
+zoom = Vector2(5.74, 5.74)
+
+[connection signal="pressed" from="Button_Manager/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Button_Manager/Start" to="Button_Manager/Start" method="_on_pressed"]
