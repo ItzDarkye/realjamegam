@@ -11,6 +11,8 @@ radius = 149.64
 
 [node name="enemy" type="CharacterBody2D" unique_id=2026744539]
 collision_layer = 2
+platform_on_leave = 2
+platform_floor_layers = 4294967294
 script = ExtResource("1_md0e3")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=275307339]

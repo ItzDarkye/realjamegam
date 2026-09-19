@@ -4,9 +4,13 @@ extends CharacterBody2D
 @onready var timer_for_roll=$Timer
 @onready var player_collision_box=$CollisionShape2D
 var is_rolling=false
-
-
-
+var contact_enemy=false
+var bounce_velocity
+func check_contact_with_enemy():
+	if contact_enemy:
+		velocity=bounce_velocity
+		contact_enemy=false
+	
 func roll_like_crazy(x_direction,y_direction):
 	player_collision_box.disabled=true
 	velocity=Vector2(x_direction,y_direction)*velocity_coll*3
@@ -32,6 +36,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	get_inputs()
+	check_contact_with_enemy()
 	move_and_slide()
 
 
