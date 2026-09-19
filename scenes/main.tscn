@@ -20,6 +20,13 @@ size = Vector2(162, 299.5)
 script = ExtResource("1_o6xl0")
 spawn_points = Array[Vector2]([Vector2(-2000, -2022), Vector2(2000, -2022), Vector2(0, -2022)])
 
+[node name="fade_transition" parent="." unique_id=1306272292 instance=ExtResource("2_85g3d")]
+top_level = true
+offset_left = -9224.0
+offset_top = -7496.0
+offset_right = 6720.0
+offset_bottom = 3832.0
+
 [node name="player" parent="." unique_id=501528392 instance=ExtResource("1_o5qli")]
 scale = Vector2(10, 10)
 velocity_coll = 500
@@ -38,7 +45,6 @@ dead_zone_height = 0.516
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1381749005]
 physics_interpolation_mode = 1
-top_level = true
 zoom = Vector2(0.1, 0.1)
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D" unique_id=1222323502]
