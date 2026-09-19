@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://c684k0bj7r3jo"]
+[gd_scene format=3 uid="uid://k31yx6j2f8k4"]
+
+[ext_resource type="PackedScene" uid="uid://c684k0bj7r3jo" path="res://scenes/fade_transition.tscn" id="1_afvxm"]
 
 [sub_resource type="Animation" id="Animation_x8c23"]
 length = 0.001
@@ -66,7 +68,7 @@ tracks/0/keys = {
 "values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_vxaoj"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_270kp"]
 _data = {
 &"RESET": SubResource("Animation_x8c23"),
 &"fade_in": SubResource("Animation_6uw4y"),
@@ -74,10 +76,10 @@ _data = {
 &"fade_out": SubResource("Animation_3nli8")
 }
 
-[node name="ColorRect" type="ColorRect" unique_id=1306272292]
-offset_right = 576.0
-offset_bottom = 320.0
-color = Color(0, 0, 0, 1)
+[node name="CanvasLayer" type="CanvasLayer" unique_id=242051401]
+layer = 100
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2066737768]
-libraries/ = SubResource("AnimationLibrary_vxaoj")
+[node name="ColorRect" parent="." unique_id=1306272292 instance=ExtResource("1_afvxm")]
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="ColorRect" unique_id=1894027636]
+libraries/ = SubResource("AnimationLibrary_270kp")

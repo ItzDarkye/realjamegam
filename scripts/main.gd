@@ -15,7 +15,12 @@ func end_round():
 	timer_for_monsters.stop()
 	player.set_physics_process(false)
 	print("You Won The "+str(round_number)+" round")
-	#insert transition here
+	$CanvasLayer/fade_timer2.start()
+	$CanvasLayer/ColorRect/AnimationPlayer.play("fade_in_player")
+	
+	
+
+
 
 func spawn_a_monster():
 	var get_random_position=randi_range(0,spawn_points.size()-1)
@@ -41,7 +46,7 @@ func set_timer():
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	set_timer()
-	$fade_transition/AnimationPlayer.play("fade_out")
+	$CanvasLayer/ColorRect/AnimationPlayer.play("fade_out")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -53,3 +58,7 @@ func _process(delta: float) -> void:
 
 func _on_timer_timeout() -> void:
 	spawn_a_monster() # Replace with function body.
+
+
+func _on_fade_timer_2_timeout() -> void:
+	get_tree().change_scene_to_file("res://scenes/stat_screen.tscn")
