@@ -23,7 +23,7 @@ func hud_flash() -> void:
 
 	while bar.time_to_notimm:
 		$ImmortalBar.modulate = Color(1, 0, 0, 1)
-		await get_tree().create_timer(0.35).timeout
+		await get_tree().create_timer(1).timeout
 		$ImmortalBar.modulate = Color(1, 1, 1, 1)
-		await get_tree().create_timer(0.35).timeout
+		await get_tree().create_timer(1).timeout
 		

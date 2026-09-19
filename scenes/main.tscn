@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c6drg8ufoh285"]
 
 [ext_resource type="PackedScene" uid="uid://66map821y2" path="res://scenes/player.tscn" id="1_o5qli"]
+[ext_resource type="Script" uid="uid://ch3ui6njmqpjv" path="res://scripts/main.gd" id="1_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://d21220ayfvvxw" path="res://scenes/enemy.tscn" id="1_tbgi4"]
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_sugp2"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_jyhfs"]
@@ -18,6 +19,7 @@ size = Vector2(162, 307.5)
 size = Vector2(162, 299.5)
 
 [node name="Node2D" type="Node2D" unique_id=1927999117]
+script = ExtResource("1_o6xl0")
 
 [node name="player" parent="." unique_id=501528392 instance=ExtResource("1_o5qli")]
 scale = Vector2(10, 10)

@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://0cusii8sx1vr"]
+
+[ext_resource type="Script" uid="uid://bmj2hpc3x1hk6" path="res://scripts/main_menu.gd" id="1_l6cm7"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_l6cm7"]
+load_path = "res://.godot/imported/Square_premade_buttons_16x16px.png-9ed0cbf3207c7b2537339fa3fe2f1039.ctex"
+
+[node name="Main Menu" type="Node2D" unique_id=1536426179]
+script = ExtResource("1_l6cm7")
+
+[node name="Button_Manager" type="Control" parent="." unique_id=1674543418]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureButton" type="TextureButton" parent="Button_Manager" unique_id=1501747617]
+modulate = Color(0.3810883, 0.34455234, 0.3936184, 1)
+texture_filter = 1
+layout_mode = 0
+offset_left = 83.0
+offset_top = 42.0
+offset_right = 353.0
+offset_bottom = 57.0
+texture_normal = SubResource("CompressedTexture2D_l6cm7")
+ignore_texture_size = true
+
+[node name="TextureButton2" type="TextureButton" parent="Button_Manager" unique_id=433978251]
+layout_mode = 0
+offset_left = -56.0
+offset_top = 9.0
+offset_right = -16.0
+offset_bottom = 49.0
+
+[node name="TextureButton3" type="TextureButton" parent="Button_Manager" unique_id=1496826637]
+layout_mode = 0
+offset_left = -105.0
+offset_top = 4.0
+offset_right = -65.0
+offset_bottom = 44.0
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=890610414]
+offset = Vector2(155.59, 42.425)
+zoom = Vector2(5.74, 5.74)
