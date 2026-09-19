@@ -10,9 +10,7 @@ var health=4
 
 
 func check_if_dead():
-	if health==0 or get_parent().enemy_killed==(get_parent().round_number*4):
-		if health==0:
-			get_parent().enemy_killed+=1
+	if health==0:
 		queue_free()
 
 func knockback():
