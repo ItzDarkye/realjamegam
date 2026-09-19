@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ddtq2sqwhaedr" path="res://sprites/heart_32x32.png" id="5_qlg0r"]
 [ext_resource type="Script" uid="uid://ci55ltq5xqrp0" path="res://scripts/immortal_bar.gd" id="6_fjrip"]
 [ext_resource type="Texture2D" uid="uid://dlh12chshgmcm" path="res://sprites/tomatoreplacement (2).png" id="6_tuyoq"]
+[ext_resource type="Script" uid="uid://bx4p0g2645phl" path="res://scripts/tomato_collector.gd" id="8_smehm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nhenn"]
 
@@ -90,5 +91,10 @@ texture = ExtResource("6_tuyoq")
 position = Vector2(22.000008, 89)
 scale = Vector2(0.007874996, 0.007874996)
 texture = ExtResource("6_tuyoq")
+
+[node name="TomatoCollector" type="Node2D" parent="." unique_id=1416732072 node_paths=PackedStringArray("body")]
+script = ExtResource("8_smehm")
+body = NodePath("..")
+metadata/_custom_type_script = "uid://bx4p0g2645phl"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
