@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://2u8cur26l1xg"]
+
+[ext_resource type="Script" uid="uid://bx4p0g2645phl" path="res://scripts/tomato_collector.gd" id="1_hy665"]
+
+[node name="TomatoCollector" type="Node2D" unique_id=942374342]
+script = ExtResource("1_hy665")

@@ -1,8 +1,10 @@
+class_name Player
 extends CharacterBody2D
 
 @export var velocity_coll:int
 @onready var timer_for_roll=$Timer
 @onready var player_collision_box=$CollisionShape2D
+@onready var tomato_collector=$TomatoCollector
 var is_rolling=false
 var contact_enemy=false
 var bounce_velocity

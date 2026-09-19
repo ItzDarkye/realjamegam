@@ -1,7 +1,9 @@
+class_name Enemy
 extends CharacterBody2D
 
 var is_in_view=false
 @onready var player=$/root/Node2D/player
+@onready var tomato_collector=$TomatoCollector
 @export var tree_position:Vector2
 
 func check_collision_whit_player():
@@ -32,7 +34,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	giga_chad_enemy_movement()
-	check_collision_whit_player()
+	#print(str(position))
 	move_and_slide()
 
 
