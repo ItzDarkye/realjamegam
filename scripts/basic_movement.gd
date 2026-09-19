@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody2D
 var type_of_thing="PLAYER"
 @export var velocity_coll:int
@@ -10,6 +11,7 @@ var type_of_thing="PLAYER"
 @onready var timer_for_hitbox=$Timer2
 @onready var sprite_of_hitbox=$HitBox/Sprite2D
 
+@onready var tomato_collector=$TomatoCollector
 var is_rolling=false
 var contact_enemy=false
 var bounce_velocity

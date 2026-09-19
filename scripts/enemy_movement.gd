@@ -1,7 +1,9 @@
+class_name Enemy
 extends CharacterBody2D
 
 var is_in_view=false
 @onready var player=$/root/Node2D/player
+@onready var tomato_collector=$TomatoCollector
 @export var tree_position:Vector2
 var type_of_thing="BAD"
 var health=4
@@ -45,7 +47,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	check_if_dead()
 	giga_chad_enemy_movement()
-	check_collision_whit_player()
+	#print(str(position))
 	move_and_slide()
 
 
