@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://66map821y2" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://ch3ui6njmqpjv" path="res://scripts/main.gd" id="1_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://d21220ayfvvxw" path="res://scenes/enemy.tscn" id="1_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://c684k0bj7r3jo" path="res://scenes/fade_transition.tscn" id="2_85g3d"]
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_sugp2"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_jyhfs"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_jyhfs"]
@@ -20,6 +21,13 @@ size = Vector2(162, 299.5)
 
 [node name="Node2D" type="Node2D" unique_id=1927999117]
 script = ExtResource("1_o6xl0")
+
+[node name="fade_transition" parent="." unique_id=1306272292 instance=ExtResource("2_85g3d")]
+top_level = true
+offset_left = -9224.0
+offset_top = -7496.0
+offset_right = 6720.0
+offset_bottom = 3832.0
 
 [node name="player" parent="." unique_id=501528392 instance=ExtResource("1_o5qli")]
 scale = Vector2(10, 10)
@@ -39,7 +47,6 @@ dead_zone_height = 0.516
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1381749005]
 physics_interpolation_mode = 1
-top_level = true
 zoom = Vector2(0.1, 0.1)
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D" unique_id=1222323502]

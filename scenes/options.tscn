@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://k5rljyl73un0"]
+
+[ext_resource type="Script" uid="uid://58bxls4k3qik" path="res://scripts/options.gd" id="1_yjkok"]
+[ext_resource type="PackedScene" uid="uid://c684k0bj7r3jo" path="res://scenes/fade_transition.tscn" id="2_2iy26"]
+
+[node name="Options" type="Node2D" unique_id=397993686]
+script = ExtResource("1_yjkok")
+
+[node name="fade_transition" parent="." unique_id=1306272292 instance=ExtResource("2_2iy26")]
+top_level = true
+offset_right = 1360.0
+offset_bottom = 728.0

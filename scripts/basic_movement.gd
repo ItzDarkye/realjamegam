@@ -51,8 +51,7 @@ func get_inputs():
 		sprite_of_hitbox.visible=true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var max_health = $health.max_health
-	print(max_health)
+	pass
 	
 
 
