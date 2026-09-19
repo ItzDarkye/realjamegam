@@ -1,22 +1,35 @@
 extends Node2D
 
+var button_type = null
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass
-
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 
 func _on_start_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/main.tscn")
-	
-func _on_options_pressed() -> void:
-	pass # Replace with function body.
+	button_type = "start"
+	$Fade_Transition.show()
+	$Fade_Transition/fade_timer.start()
+	$Fade_Transition/AnimationPlayer.play("fade_in")
 
-func _on_quit_pressed() -> void:
-	get_tree().quit()
+
+func _on_options_pressed() -> void:
+		button_type = "options"
+		$Fade_Transition.show()
+		$Fade_Transition/fade_timer.start()
+		$Fade_Transition/AnimationPlayer.play("fade_in")
+		
+
+func _on_exit_pressed() -> void:
+	button_type = "exit"
+	$Fade_Transition.show()
+	$Fade_Transition/fade_timer.start()
+	$Fade_Transition/AnimationPlayer.play("fade_in")
+	
+
+
+func _on_fade_timer_timeout():
+	if button_type == "start":
+		get_tree().change_scene_to_file("res://scenes/main.tscn")
+	elif button_type == "exit":
+		get_tree().quit()
+	elif button_type == "options":
+		get_tree().change_scene_to_file("res://scenes/options.tscn")
