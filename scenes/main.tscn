@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_sugp2"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_jyhfs"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://63y6o3ryaxdr" path="res://scenes/enemy2.tscn" id="6_tefeu"]
 
 [sub_resource type="Resource" id="Resource_tbgi4"]
 script = ExtResource("3_jyhfs")
@@ -42,3 +43,7 @@ metadata/_custom_type_script = "uid://bd046eokvcnu2"
 position = Vector2(3000, 0)
 scale = Vector2(10, 10)
 tree_position = Vector2(20, -2000)
+
+[node name="enemy2" parent="." unique_id=1817715867 instance=ExtResource("6_tefeu")]
+position = Vector2(0, -2500)
+scale = Vector2(10, 10)

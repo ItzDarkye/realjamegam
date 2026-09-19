@@ -70,9 +70,13 @@ func _on_timer_timeout() -> void:
 
 func _on_hurt_box_body_entered(body: CharacterBody2D) -> void:
 	#print( body.type_of_thing)
-	if body.type_of_thing=="BAD": # Replace with function body.
+	if body.type_of_thing=="BAD" or body.type_of_thing=="ARROW":
+		print(body.name) # Replace with function body.
+		if body.type_of_thing=="ARROW":
+				body.queue_free()
 		if immortal_bar.value<=0:
 			health.take_damage(1)
+			
 
 
 func _on_hit_box_body_entered(body: CharacterBody2D) -> void:
