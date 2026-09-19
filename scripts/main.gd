@@ -5,7 +5,6 @@ var instance1=preload("res://scenes/enemy.tscn")
 var instance2=preload("res://scenes/enemy2.tscn")
 var enemy_killed=0
 var round_number:int
-@onready var player=$player
 @onready var timer_for_monsters=$Timer
 @export var spawn_points:Array[Vector2]
 
@@ -13,6 +12,7 @@ func end_round():
 	var file=FileAccess.open("res://scripts/round_number.txt",FileAccess.WRITE)
 	file.store_string(str(round_number+1))
 	timer_for_monsters.stop()
+	var player=$player
 	player.set_physics_process(false)
 	print("You Won The "+str(round_number)+" round")
 	$CanvasLayer/fade_timer2.start()
@@ -20,8 +20,15 @@ func end_round():
 	
 	
 
-
-
+func spawn_player():
+	var instance=preload("res://scenes/player.tscn")
+	var player=instance.instantiate()
+	var file=FileAccess.open("res://scripts/upgrades.txt", FileAccess.READ)
+	var list_of_upgrades=file.get_csv_line()
+	player.immortal_bar.max_value+=int(list_of_upgrades[0])
+	player.velocity_coll+=int(list_of_upgrades[1])
+	player.damage+=int(list_of_upgrades[1])
+	add_child(player)
 func spawn_a_monster():
 	var get_random_position=randi_range(0,spawn_points.size()-1)
 	var get_random_enemy=randi_range(1,2)
@@ -46,6 +53,7 @@ func set_timer():
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	set_timer()
+	#spawn_player()
 	$CanvasLayer/ColorRect/AnimationPlayer.play("fade_out")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

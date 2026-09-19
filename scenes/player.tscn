@@ -22,6 +22,7 @@ collision_mask = 6
 platform_on_leave = 2
 platform_floor_layers = 4294967293
 script = ExtResource("1_g2els")
+velocity_coll = 500
 
 [node name="health" type="Node" parent="." unique_id=2114623791]
 script = ExtResource("2_dqkch")

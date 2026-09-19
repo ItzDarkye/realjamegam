@@ -1,6 +1,7 @@
 class_name Player
 extends CharacterBody2D
 var type_of_thing="PLAYER"
+@export var damage=1
 @export var velocity_coll:int
 @onready var timer_for_roll=$Timer
 @onready var player_collision_box=$CollisionShape2D
@@ -15,7 +16,14 @@ var type_of_thing="PLAYER"
 var is_rolling=false
 var contact_enemy=false
 var bounce_velocity
-
+func set_upgrades():
+	var file=FileAccess.open("res://scripts/upgrades.txt", FileAccess.READ)
+	var list_of_upgrades=file.get_csv_line()
+	
+	immortal_bar.timer_time+=int(list_of_upgrades[0]) #seconds
+	velocity_coll+=int(list_of_upgrades[1])#in the 200
+	damage+=int(list_of_upgrades[2])# int of 1
+	
 func position_the_hitbox(x_direction,y_direction):
 	if x_direction==0 and y_direction==0:
 		return
@@ -53,12 +61,13 @@ func get_inputs():
 		sprite_of_hitbox.visible=true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	set_upgrades()
 	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
+	print(position)
 	get_inputs()
 	check_contact_with_enemy()
 	move_and_slide()
@@ -85,7 +94,7 @@ func _on_hurt_box_body_entered(body: CharacterBody2D) -> void:
 func _on_hit_box_body_entered(body: CharacterBody2D) -> void:
 	if body.type_of_thing=="BAD": 
 		if body.health:
-			body.health-=1
+			body.health-=damage
 			body.knockback()
 			print(body.health)
 
