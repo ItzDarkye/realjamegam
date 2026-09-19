@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://66map821y2"]
+
+[ext_resource type="Texture2D" uid="uid://bsg27bkj1f0ud" path="res://sprites/New Piskel-1.png (1).png" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://doamjwk1clhpj" path="res://scripts/basic_movement.gd" id="1_g2els"]
+[ext_resource type="Script" uid="uid://b8dqb1brw1i88" path="res://scripts/hp_system.gd" id="2_dqkch"]
+[ext_resource type="Script" uid="uid://kb4xs1grd85f" path="res://scripts/HUD.gd" id="4_qlg0r"]
+[ext_resource type="Texture2D" uid="uid://ddtq2sqwhaedr" path="res://sprites/heart_32x32.png" id="5_qlg0r"]
+[ext_resource type="Script" uid="uid://ci55ltq5xqrp0" path="res://scripts/immortal_bar.gd" id="6_fjrip"]
+[ext_resource type="Texture2D" uid="uid://dlh12chshgmcm" path="res://sprites/tomatoreplacement (2).png" id="6_tuyoq"]
+[ext_resource type="Script" uid="uid://bx4p0g2645phl" path="res://scripts/tomato_collector.gd" id="8_smehm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nhenn"]
+
+[node name="player" type="CharacterBody2D" unique_id=501528392]
+collision_mask = 6
+platform_on_leave = 2
+platform_floor_layers = 4294967293
+script = ExtResource("1_g2els")
+
+[node name="ImmortalBar" type="ProgressBar" parent="." unique_id=974614070]
+modulate = Color(0, 0.7816132, 0.2732128, 1)
+offset_left = 14.0
+offset_top = 48.0
+offset_right = 100.0
+offset_bottom = 75.0
+offset_transform_enabled = true
+offset_transform_position = Vector2(6.15, 11.895)
+offset_transform_scale = Vector2(1.34, 1.34)
+value = 10.0
+show_percentage = false
+script = ExtResource("6_fjrip")
+
+[node name="health" type="Node" parent="." unique_id=2114623791]
+script = ExtResource("2_dqkch")
+metadata/_custom_type_script = "uid://b8dqb1brw1i88"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=870358834]
+shape = SubResource("RectangleShape2D_nhenn")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1847412603]
+texture = ExtResource("1_3vyb7")
+
+[node name="Timer" type="Timer" parent="." unique_id=1568131762]
+wait_time = 0.4
+one_shot = true
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1677148063]
+script = ExtResource("4_qlg0r")
+
+[node name="health" type="Node" parent="HUD" unique_id=2126869632]
+script = ExtResource("2_dqkch")
+metadata/_custom_type_script = "uid://b8dqb1brw1i88"
+
+[node name="Panel" type="Panel" parent="HUD" unique_id=1871599601]
+offset_right = 160.0
+offset_bottom = 30.0
+offset_transform_enabled = true
+offset_transform_position = Vector2(14, 14)
+offset_transform_scale = Vector2(1.12, 1.12)
+
+[node name="empty_heart" type="TextureRect" parent="HUD/Panel" unique_id=2112615742]
+modulate = Color(0, 0, 0, 1)
+show_behind_parent = true
+light_mask = 2
+layout_mode = 0
+offset_top = -2.0
+offset_right = 160.0
+offset_bottom = 30.0
+texture = ExtResource("5_qlg0r")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="Heart" type="TextureRect" parent="HUD/Panel" unique_id=1961352748]
+light_mask = 2
+visibility_layer = 2
+layout_mode = 0
+offset_bottom = 32.0
+texture = ExtResource("5_qlg0r")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="Tomatoreplacement(2)" type="Sprite2D" parent="HUD" unique_id=1069142548]
+position = Vector2(117, 57.000008)
+scale = Vector2(0.007874996, 0.007874996)
+texture = ExtResource("6_tuyoq")
+
+[node name="Tomatoreplacement(2)2" type="Sprite2D" parent="HUD" unique_id=79134855]
+position = Vector2(10, 90.99999)
+scale = Vector2(0.0039374963, 0.0044374987)
+texture = ExtResource("6_tuyoq")
+
+[node name="Tomatoreplacement(2)3" type="Sprite2D" parent="HUD" unique_id=387686104]
+position = Vector2(22.000008, 89)
+scale = Vector2(0.007874996, 0.007874996)
+texture = ExtResource("6_tuyoq")
+
+[node name="TomatoCollector" type="Node2D" parent="." unique_id=1416732072 node_paths=PackedStringArray("body")]
+script = ExtResource("8_smehm")
+body = NodePath("..")
+metadata/_custom_type_script = "uid://bx4p0g2645phl"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

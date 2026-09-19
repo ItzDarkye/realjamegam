@@ -1,6 +1,7 @@
 class_name Tomato
 extends Node2D
 
+
 @onready var area = $Area2D
 @export var max_scale: Vector2 = Vector2(0.2, 0.2)
 @export var lifeDuration = 10
@@ -37,5 +38,6 @@ func _on_body_entered(body : Node2D) -> void:
 		return
 	if body is Player or body is Enemy:
 		#print("body is Player or body is Enemy")
+		
 		body.tomato_collector.collect_a_tomato()
 		shrink_and_destroy()
