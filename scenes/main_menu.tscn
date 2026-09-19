@@ -1,19 +1,28 @@
 [gd_scene format=3 uid="uid://0cusii8sx1vr"]
 
 [ext_resource type="Script" uid="uid://bmj2hpc3x1hk6" path="res://scripts/main_menu.gd" id="1_l6cm7"]
-[ext_resource type="Texture2D" uid="uid://0641h50ym3r3" path="res://sprites/MENU/buttons/Start Game.png" id="2_oa1go"]
-[ext_resource type="Texture2D" uid="uid://dshxe7ou6351b" path="res://sprites/MENU/buttons/Start Game2.png" id="3_tbmy8"]
-[ext_resource type="Texture2D" uid="uid://0uk42x0ciglx" path="res://sprites/MENU/buttons/Options.png" id="4_oa1go"]
-[ext_resource type="Texture2D" uid="uid://wycqra4m8u12" path="res://sprites/MENU/buttons/Options2.png" id="5_tbmy8"]
-[ext_resource type="Texture2D" uid="uid://cbut6xk6488qs" path="res://sprites/MENU/buttons/Exit.png" id="6_jk1qb"]
-[ext_resource type="Texture2D" uid="uid://u1kljkk23eu0" path="res://sprites/MENU/buttons/Exit2.png" id="7_5dd4i"]
+[ext_resource type="Texture2D" uid="uid://xv74h8xoa7p" path="res://sprites/MENU/buttons/StartGameMAINA.png" id="2_jk1qb"]
+[ext_resource type="Texture2D" uid="uid://dgti56adcscju" path="res://sprites/MENU/buttons/StartGameMAIN.png" id="3_5dd4i"]
+[ext_resource type="Texture2D" uid="uid://bj5whipvkrxnt" path="res://sprites/MENU/buttons/ExitMAIN2.png" id="6_flqon"]
+[ext_resource type="Texture2D" uid="uid://by3ccrirtoilu" path="res://sprites/MENU/buttons/ExitMAIN.png" id="7_rcqid"]
 [ext_resource type="PackedScene" uid="uid://c684k0bj7r3jo" path="res://scenes/fade_transition.tscn" id="8_tbmy8"]
+[ext_resource type="Texture2D" uid="uid://cd1r1bvh5wp3s" path="res://sprites/IMG_1009.png" id="9_jk1qb"]
+[ext_resource type="Texture2D" uid="uid://bels82l1ykri8" path="res://sprites/MENU/F26A5A.png" id="10_1ajci"]
+
+[sub_resource type="Animation" id="Animation_5dd4i"]
+resource_name = "fade_in_hover"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lgwnu"]
+_data = {
+&"fade_in_hover": SubResource("Animation_5dd4i")
+}
 
 [node name="Main Menu" type="Node2D" unique_id=1536426179]
 scale = Vector2(1.105, 1)
 script = ExtResource("1_l6cm7")
 
 [node name="Button_Manager" type="Control" parent="." unique_id=1674543418]
+top_level = true
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -21,41 +30,32 @@ offset_bottom = 40.0
 scale = Vector2(0.645, 0.645)
 metadata/_edit_use_anchors_ = true
 
-[node name="Start" type="TextureButton" parent="Button_Manager" unique_id=1440171398]
+[node name="Start" type="TextureButton" parent="Button_Manager" unique_id=1478182202]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-offset_left = 235.71506
-offset_top = 24.806202
-offset_right = 753.7151
-offset_bottom = 88.8062
+offset_left = 213.95352
+offset_top = 58.91472
+offset_right = 819.9535
+offset_bottom = 148.9147
 scale = Vector2(0.98, 0.98)
-texture_normal = ExtResource("2_oa1go")
-texture_hover = ExtResource("3_tbmy8")
-
-[node name="Options" type="TextureButton" parent="Button_Manager" unique_id=1974188568]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = -1
-offset_left = 235.71506
-offset_top = 148.8372
-offset_right = 579.71545
-offset_bottom = 238.8372
-scale = Vector2(0.98, 0.98)
-texture_normal = ExtResource("4_oa1go")
-texture_hover = ExtResource("5_tbmy8")
+texture_normal = ExtResource("3_5dd4i")
+texture_hover = ExtResource("2_jk1qb")
 
 [node name="Exit" type="TextureButton" parent="Button_Manager" unique_id=1869382663]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-offset_left = 235.71506
-offset_top = 272.86826
-offset_right = 579.71545
-offset_bottom = 362.86826
+offset_left = 214.00961
+offset_top = 148.83725
+offset_right = 558.01
+offset_bottom = 238.83725
 scale = Vector2(0.98, 0.98)
-texture_normal = ExtResource("6_jk1qb")
-texture_hover = ExtResource("7_5dd4i")
+texture_normal = ExtResource("6_flqon")
+texture_hover = ExtResource("7_rcqid")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Button_Manager/Exit" unique_id=1311766794]
+libraries/ = SubResource("AnimationLibrary_lgwnu")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=890610414]
 offset = Vector2(200.7, 120.765)
@@ -63,6 +63,7 @@ zoom = Vector2(1.475, 1.475)
 
 [node name="Fade_Transition" parent="." unique_id=1306272292 instance=ExtResource("8_tbmy8")]
 visible = false
+top_level = true
 offset_left = -325.79187
 offset_top = -184.0
 offset_right = 593.66516
@@ -70,7 +71,18 @@ offset_bottom = 384.0
 
 [node name="fade_timer" type="Timer" parent="Fade_Transition" unique_id=1560101858]
 
+[node name="Img1009" type="Sprite2D" parent="." unique_id=319015447]
+visible = false
+position = Vector2(179.84818, 122.059654)
+scale = Vector2(1.5340451, 0.6568062)
+texture = ExtResource("9_jk1qb")
+region_enabled = true
+region_rect = Rect2(1267, 961, 464, 664)
+
+[node name="F26a5a" type="Sprite2D" parent="." unique_id=1170645172]
+position = Vector2(217.19456, 96)
+texture = ExtResource("10_1ajci")
+
 [connection signal="pressed" from="Button_Manager/Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="Button_Manager/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="Button_Manager/Exit" to="." method="_on_exit_pressed"]
 [connection signal="timeout" from="Fade_Transition/fade_timer" to="." method="_on_fade_timer_timeout"]

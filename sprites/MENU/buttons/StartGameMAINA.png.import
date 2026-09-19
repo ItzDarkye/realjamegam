@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wycqra4m8u12"
-path="res://.godot/imported/Options2.png-c3e8afcb0ceee20df17165210c6ac025.ctex"
+uid="uid://xv74h8xoa7p"
+path="res://.godot/imported/StartGameMAINA.png-39fb4c651714750f402ad35f56657fa0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/MENU/buttons/Options2.png"
-dest_files=["res://.godot/imported/Options2.png-c3e8afcb0ceee20df17165210c6ac025.ctex"]
+source_file="res://sprites/MENU/buttons/StartGameMAINA.png"
+dest_files=["res://.godot/imported/StartGameMAINA.png-39fb4c651714750f402ad35f56657fa0.ctex"]
 
 [params]
 
