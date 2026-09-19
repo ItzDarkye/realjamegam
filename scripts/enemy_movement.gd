@@ -3,6 +3,18 @@ extends CharacterBody2D
 var is_in_view=false
 @onready var player=$/root/Node2D/player
 @export var tree_position:Vector2
+var type_of_thing="BAD"
+var health=4
+
+
+func check_if_dead():
+	if health==0:
+		queue_free()
+
+func knockback():
+	#print("Hi")
+	velocity=-velocity*100
+	move_and_slide()
 
 func check_collision_whit_player():
 	var collider=get_last_slide_collision()
@@ -31,6 +43,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
+	check_if_dead()
 	giga_chad_enemy_movement()
 	check_collision_whit_player()
 	move_and_slide()
