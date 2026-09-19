@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://ddtq2sqwhaedr" path="res://sprites/heart_32x32.png" id="5_qlg0r"]
 [ext_resource type="Script" uid="uid://ci55ltq5xqrp0" path="res://scripts/immortal_bar.gd" id="6_fjrip"]
 [ext_resource type="Texture2D" uid="uid://dlh12chshgmcm" path="res://sprites/tomatoreplacement (2).png" id="6_tuyoq"]
-[ext_resource type="Texture2D" uid="uid://ccx0w400ti2ia" path="res://icon.svg" id="8_smehm"]
 [ext_resource type="Script" uid="uid://bx4p0g2645phl" path="res://scripts/tomato_collector.gd" id="8_smehm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nhenn"]
@@ -40,6 +39,7 @@ wait_time = 0.4
 one_shot = true
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1677148063]
+layer = 2
 script = ExtResource("4_qlg0r")
 
 [node name="health" type="Node" parent="HUD" unique_id=2126869632]
@@ -125,11 +125,11 @@ shape = SubResource("RectangleShape2D_utj07")
 visible = false
 position = Vector2(0.96449304, -2.0812726)
 scale = Vector2(0.045271363, 0.2007324)
-texture = ExtResource("8_smehm")
 
 [node name="Timer2" type="Timer" parent="." unique_id=291713001]
 wait_time = 0.3
 one_shot = true
+
 [node name="TomatoCollector" type="Node2D" parent="." unique_id=1416732072 node_paths=PackedStringArray("body")]
 script = ExtResource("8_smehm")
 body = NodePath("..")

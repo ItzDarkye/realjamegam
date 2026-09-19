@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://cojndtfyu3diq"]
+
+[ext_resource type="Script" uid="uid://bgetdr6kbxy4b" path="res://scripts/stat_screen.gd" id="1_gyuhm"]
+[ext_resource type="Texture2D" uid="uid://xptglntlcawn" path="res://sprites/hud.png" id="1_p3w7n"]
+[ext_resource type="Texture2D" uid="uid://dlokixyo1fq2k" path="res://sprites/MENU/stat.buton.next.png" id="1_syf4t"]
+[ext_resource type="Texture2D" uid="uid://c1keil0pavqtr" path="res://sprites/MENU/stat.buton.quit.png" id="2_0k78h"]
+[ext_resource type="PackedScene" uid="uid://k31yx6j2f8k4" path="res://scenes/main_trans.tscn" id="2_h10ah"]
+[ext_resource type="Texture2D" uid="uid://0go6movho4aa" path="res://sprites/MENU/stat.buton.next.pressed.png" id="2_lie50"]
+[ext_resource type="Texture2D" uid="uid://dp8iogx5cy34i" path="res://sprites/MENU/stat.buton.next.hover.png" id="3_ujair"]
+[ext_resource type="Texture2D" uid="uid://np8sgr3h1e5l" path="res://sprites/MENU/stat.buton.quit.pressed.png" id="3_yhe4x"]
+[ext_resource type="Texture2D" uid="uid://b58wbk7cwv2wy" path="res://sprites/MENU/stat.buton.quit.hover.png" id="4_ekh1h"]
+[ext_resource type="Texture2D" uid="uid://clhias440f7qx" path="res://sprites/MENU/upgrade_hud.png" id="8_yhe4x"]
+[ext_resource type="Texture2D" uid="uid://bels82l1ykri8" path="res://sprites/MENU/F26A5A.png" id="9_c7rj2"]
+[ext_resource type="Texture2D" uid="uid://vagnyygi2wa2" path="res://sprites/veritas.png" id="9_ekh1h"]
+
+[node name="Node2D" type="Node2D" unique_id=943329975]
+script = ExtResource("1_gyuhm")
+
+[node name="CanvasLayer" parent="." unique_id=242051401 instance=ExtResource("2_h10ah")]
+visible = false
+scale = Vector2(7.2, 7.2)
+transform = Transform2D(7.2, 0, 0, 7.2, 0, 0)
+
+[node name="HUD2" type="CanvasLayer" parent="." unique_id=336052395]
+layer = 2
+
+[node name="Hud" type="Sprite2D" parent="HUD2" unique_id=1230297513]
+position = Vector2(416.327, 323.5)
+scale = Vector2(1.6613079, 1.6225001)
+texture = ExtResource("1_p3w7n")
+
+[node name="QuitButton" type="TextureButton" parent="HUD2" unique_id=36328568]
+texture_filter = 1
+offset_left = 334.0
+offset_top = 483.0
+offset_right = 477.0
+offset_bottom = 569.0
+scale = Vector2(1.495, 1.495)
+texture_normal = ExtResource("2_0k78h")
+texture_pressed = ExtResource("3_yhe4x")
+texture_hover = ExtResource("4_ekh1h")
+
+[node name="NextButton" type="TextureButton" parent="HUD2" unique_id=637399005]
+texture_filter = 1
+offset_left = 565.0
+offset_top = 483.00003
+offset_right = 708.0
+offset_bottom = 569.0
+scale = Vector2(1.495, 1.495)
+texture_normal = ExtResource("1_syf4t")
+texture_pressed = ExtResource("2_lie50")
+texture_hover = ExtResource("3_ujair")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD2" unique_id=344863604]
+offset_left = -1037.0
+offset_top = -41.0
+offset_right = -263.0
+offset_bottom = 636.0
+
+[node name="Upgrade1" type="TextureButton" parent="HUD2/HBoxContainer" unique_id=68007190]
+layout_mode = 2
+texture_normal = ExtResource("8_yhe4x")
+
+[node name="Upgrade2" type="TextureButton" parent="HUD2/HBoxContainer" unique_id=664598876]
+layout_mode = 2
+texture_normal = ExtResource("8_yhe4x")
+
+[node name="Upgrade3" type="TextureButton" parent="HUD2/HBoxContainer" unique_id=1771433886]
+layout_mode = 2
+texture_normal = ExtResource("8_yhe4x")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1473344091]
+offset = Vector2(350.565, 195.585)
+zoom = Vector2(1.65, 1.65)
+
+[node name="HUD3" type="CanvasLayer" parent="." unique_id=624791264]
+
+[node name="F26a5a" type="Sprite2D" parent="HUD3" unique_id=1197895483]
+position = Vector2(472, 306.00012)
+scale = Vector2(1.2529167, 1.3492063)
+texture = ExtResource("9_c7rj2")
+
+[node name="Veritas" type="Sprite2D" parent="HUD3" unique_id=1381894090]
+position = Vector2(174, 568)
+texture = ExtResource("9_ekh1h")
