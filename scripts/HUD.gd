@@ -9,6 +9,7 @@ func _ready() -> void:
 	heart_hud(player.current_health, player.max_health)
 	bar.time_to_notimm.connect(hud_flash)
 
+
 func heart_hud(current_health: int, max_health: int) -> void:
 	$Panel/Heart.size.x = 16 * current_health
 

@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://ducap75kcrn2l"]
+
+[ext_resource type="Script" uid="uid://cgsfemnj0q6w5" path="res://scripts/arrow_movement.gd" id="1_23jat"]
+[ext_resource type="Texture2D" uid="uid://ccx0w400ti2ia" path="res://icon.svg" id="1_umosx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xtssx"]
+size = Vector2(6, 4)
+
+[node name="arrow" type="CharacterBody2D" unique_id=2114815489]
+collision_layer = 2
+collision_mask = 128
+platform_floor_layers = 4294967294
+script = ExtResource("1_23jat")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=607752995]
+position = Vector2(-3.8146973e-06, 1)
+scale = Vector2(0.06249998, 0.039062496)
+texture = ExtResource("1_umosx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1268336484]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_xtssx")
