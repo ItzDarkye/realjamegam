@@ -16,8 +16,9 @@ func check_if_dead():
 
 func knockback():
 	#print("Hi")
-	velocity=-velocity*100
-	move_and_slide()
+	var tween=create_tween()
+	tween.tween_property(self,"position",velocity.normalized()*-200+global_position,0.3)
+	#move_and_slide()
 
 func check_collision_whit_player():
 	var collider=get_last_slide_collision()
@@ -29,7 +30,7 @@ func check_collision_whit_player():
 func shoot_player():
 	#await get_tree().create_timer(3).timeout
 	#print("shooting arrow")
-	velocity=Vector2(0,0)
+	velocity=velocity.normalized()
 	var arrow=instance.instantiate()
 	var vector_direction_player: Vector2=(-global_position+player.global_position)
 	arrow.velocity=vector_direction_player.normalized()*100
@@ -42,7 +43,7 @@ func follow_tree():
 
 func giga_chad_enemy_movement():
 	if is_in_view:
-		velocity=Vector2(0,0)
+		velocity=velocity.normalized()
 		if is_in_view and timer_is_stopped:
 		
 			timer_for_arrows.start()

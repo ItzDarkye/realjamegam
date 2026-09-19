@@ -17,8 +17,9 @@ func check_if_dead():
 
 func knockback():
 	#print("Hi")
-	velocity=-velocity*100
-	move_and_slide()
+	var tween=create_tween()
+	tween.tween_property(self,"position",velocity.normalized()*-200+global_position,0.3)
+	#move_and_slide()
 
 func check_collision_whit_player():
 	var collider=get_last_slide_collision()

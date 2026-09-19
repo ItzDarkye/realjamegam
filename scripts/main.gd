@@ -45,7 +45,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	print(enemy_killed)
+	#print(enemy_killed)
 	if enemy_killed==(4*round_number) and not round_is_termineted:
 		print("hi")
 		round_is_termineted=true
