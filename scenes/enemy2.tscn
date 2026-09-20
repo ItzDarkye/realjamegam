@@ -1,10 +1,26 @@
 [gd_scene format=3 uid="uid://63y6o3ryaxdr"]
 
 [ext_resource type="Script" uid="uid://c0eu0cqo4hw3x" path="res://scripts/enemy_movement2.gd" id="1_3neu4"]
+[ext_resource type="Shader" uid="uid://drgecesoqx0rw" path="res://scripts/enemy2.gdshader" id="2_23kvp"]
 [ext_resource type="Texture2D" uid="uid://qbmehgxwnf4n" path="res://sprites/New Piskel-1.png (2).png" id="2_mhmjl"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mhmjl"]
+shader = ExtResource("2_23kvp")
+shader_parameter/flash = false
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_23kvp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_mhmjl")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nhenn"]
-size = Vector2(139, 56)
+size = Vector2(134, 128)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nhenn"]
 radius = 441.02835
@@ -15,14 +31,15 @@ platform_on_leave = 2
 platform_floor_layers = 4294967294
 script = ExtResource("1_3neu4")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=275307339]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1557910042]
 texture_filter = 1
-position = Vector2(0, 2.1879997)
-scale = Vector2(4.711, 2.19925)
-texture = ExtResource("2_mhmjl")
+material = SubResource("ShaderMaterial_mhmjl")
+position = Vector2(-3.8146973e-06, 3.8146973e-06)
+scale = Vector2(4.84375, 4.84375)
+sprite_frames = SubResource("SpriteFrames_23kvp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=307515526]
-position = Vector2(0.5, 0)
+position = Vector2(3, -5)
 shape = SubResource("RectangleShape2D_nhenn")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=158296522]

@@ -1,13 +1,31 @@
 extends CharacterBody2D
 
 var is_in_view=false
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var player=$/root/Node2D/player
 @export var tree_position:Vector2
 var type_of_thing="BAD"
-var health=4
+var health=7
 var instance=preload("res://scenes/arrow.tscn")
 @onready var timer_for_arrows=$Timer
 var timer_is_stopped=true
+
+var flash_material: ShaderMaterial
+var flash_number := 0
+
+func flash_white() -> void:
+	flash_number += 1
+	var this_flash := flash_number
+
+	flash_material.set_shader_parameter("flash", true)
+	await get_tree().create_timer(0.12).timeout
+
+	if this_flash == flash_number:
+		flash_material.set_shader_parameter("flash", false)
+
+	
+	
+
 func check_if_dead():
 	if health<=0 or get_parent().round_is_termineted==true:
 		if health==0:
@@ -53,7 +71,9 @@ func giga_chad_enemy_movement():
 		follow_tree()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	flash_material = animated_sprite.material.duplicate() as ShaderMaterial
+	animated_sprite.material = flash_material
+	flash_material.set_shader_parameter("flash", false)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
