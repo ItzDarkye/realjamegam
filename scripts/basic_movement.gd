@@ -59,6 +59,11 @@ func check_contact_with_enemy():
 	
 func roll_like_crazy(x_direction,y_direction):
 	player_hurt_box.monitoring=false
+	set_collision_layer_value(16,true)
+	set_collision_layer_value(1,false)
+	set_collision_mask_value(2,false)
+	set_collision_mask_value(3,false)
+	set_collision_mask_value(16,true)
 	velocity = roll_direction * velocity_coll * 3
 
 func get_inputs():
@@ -128,6 +133,11 @@ func _physics_process(delta: float) -> void:
 
 func _on_timer_timeout() -> void:
 	is_rolling=false
+	set_collision_layer_value(16,false)
+	set_collision_layer_value(1,true)
+	set_collision_mask_value(2,true)
+	set_collision_mask_value(3,true)
+	set_collision_mask_value(16,false)
 	player_hurt_box.monitoring=true
 
 
