@@ -2,10 +2,26 @@
 
 [ext_resource type="Texture2D" uid="uid://qbmehgxwnf4n" path="res://sprites/New Piskel-1.png (2).png" id="1_7p1mj"]
 [ext_resource type="Script" uid="uid://dopwoqv1wgkat" path="res://scripts/enemy_movement.gd" id="1_md0e3"]
+[ext_resource type="Shader" uid="uid://dr7btgelf7bjl" path="res://scripts/enemy.gdshader" id="2_c4w8v"]
 [ext_resource type="Script" uid="uid://bx4p0g2645phl" path="res://scripts/tomato_collector.gd" id="3_4ra3w"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4e2ig"]
+shader = ExtResource("2_c4w8v")
+shader_parameter/flash = false
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e7p64"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_7p1mj")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nhenn"]
-size = Vector2(138, 135)
+size = Vector2(290, 303)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nhenn"]
 radius = 149.64
@@ -16,13 +32,15 @@ platform_on_leave = 2
 platform_floor_layers = 4294967294
 script = ExtResource("1_md0e3")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=275307339]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=364491813]
 texture_filter = 1
-scale = Vector2(4.711, 4.711)
-texture = ExtResource("1_7p1mj")
+material = SubResource("ShaderMaterial_4e2ig")
+position = Vector2(0, -7.6293945e-06)
+scale = Vector2(10.40625, 10.40625)
+sprite_frames = SubResource("SpriteFrames_e7p64")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=307515526]
-position = Vector2(2, -5.5)
+position = Vector2(2, -19.5)
 shape = SubResource("RectangleShape2D_nhenn")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=158296522]
@@ -30,6 +48,8 @@ scale = Vector2(8.36, 8.36)
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1193530956]
+visible = false
+texture_filter = 1
 shape = SubResource("CircleShape2D_nhenn")
 
 [node name="TomatoCollector" type="Node2D" parent="." unique_id=1696765205 node_paths=PackedStringArray("body")]

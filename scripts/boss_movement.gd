@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var player=$/root/Node2D/player
 @onready var tomato_collector=$TomatoCollector
 var instance=preload("res://scenes/boss_attack.tscn")
@@ -11,6 +12,21 @@ var type_of_thing="BAD"
 
 var health=14
 var is_hurt=false
+
+var flash_material: ShaderMaterial
+var flash_number := 0
+
+func flash_white() -> void:
+	flash_number += 1
+	var this_flash := flash_number
+
+	flash_material.set_shader_parameter("flash", true)
+	await get_tree().create_timer(0.12).timeout
+
+	if this_flash == flash_number:
+		flash_material.set_shader_parameter("flash", false)
+
+
 
 func check_if_dead():
 	
@@ -41,6 +57,9 @@ func calculate_mace_position():
 func _ready() -> void:
 	healt_bar.max_value=14
 	healt_bar.value=health 
+	flash_material = animated_sprite.material.duplicate() as ShaderMaterial
+	animated_sprite.material = flash_material
+	flash_material.set_shader_parameter("flash", false)
 func _process(delta: float) -> void:
 	healt_bar.value=health
 func hit_player():

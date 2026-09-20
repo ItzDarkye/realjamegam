@@ -13,6 +13,7 @@ var type_of_thing="PLAYER"
 @onready var timer_for_hitbox=$Timer2
 @onready var sprite_of_hitbox=$HitBox/Sprite2D
 @onready var animated_sprite = $AnimatedSprite2D
+@onready var enemy_1 = get_node("/../")
 
 @onready var tomato_collector=$TomatoCollector
 var is_attacking := false
@@ -111,7 +112,7 @@ func get_inputs():
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	set_upgrades()
-	animated_sprite.play("default")
+	
 
 func _2on_hit_box_body_entered(body: CharacterBody2D) -> void:
 	print("Hit box touched: ", body.name)
@@ -147,6 +148,8 @@ func _on_hit_box_body_entered(body: CharacterBody2D) -> void:
 	if body.type_of_thing=="BAD": 
 		if body.health:
 			body.health-=damage
+			if body.has_method("flash_white"):
+				body.flash_white()
 			if body.name!="boss":
 				body.knockback()
 			else:

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ccx0w400ti2ia" path="res://icon.svg" id="1_umosx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xtssx"]
-size = Vector2(6, 4)
+size = Vector2(91, 26)
 
 [node name="arrow" type="CharacterBody2D" unique_id=2114815489]
 collision_layer = 2
@@ -13,10 +13,9 @@ platform_floor_layers = 4294967294
 script = ExtResource("1_23jat")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=607752995]
-position = Vector2(-3.8146973e-06, 1)
-scale = Vector2(0.06249998, 0.039062496)
+position = Vector2(1.9073486e-06, 0)
+scale = Vector2(0.7109375, 0.20117188)
 texture = ExtResource("1_umosx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1268336484]
-position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_xtssx")
