@@ -15,6 +15,7 @@ script = ExtResource("1_y7i8w")
 shape = SubResource("CircleShape2D_3ai1g")
 
 [node name="Timer" type="Timer" parent="." unique_id=924121231]
+wait_time = 2.0
 one_shot = true
 autostart = true
 
@@ -24,7 +25,7 @@ scale = Vector2(0.5859375, 0.47656244)
 texture = ExtResource("2_4s766")
 
 [node name="Timer2" type="Timer" parent="." unique_id=113253674]
-wait_time = 1.2999999999999998
+wait_time = 2.3
 one_shot = true
 autostart = true
 
