@@ -21,7 +21,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nhenn"]
-size = Vector2(290, 303)
+size = Vector2(326, 327)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nhenn"]
 radius = 149.64
@@ -40,7 +40,7 @@ scale = Vector2(10.40625, 10.40625)
 sprite_frames = SubResource("SpriteFrames_e7p64")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=307515526]
-position = Vector2(2, -19.5)
+position = Vector2(6, -7.5)
 shape = SubResource("RectangleShape2D_nhenn")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=158296522]
@@ -48,7 +48,6 @@ scale = Vector2(8.36, 8.36)
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1193530956]
-visible = false
 texture_filter = 1
 shape = SubResource("CircleShape2D_nhenn")
 

@@ -66,12 +66,16 @@ tracks/0/keys = {
 "values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_8ky1r"]
+resource_name = "victory"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vxaoj"]
 _data = {
 &"RESET": SubResource("Animation_x8c23"),
 &"fade_in": SubResource("Animation_6uw4y"),
 &"fade_in_player": SubResource("Animation_vxaoj"),
-&"fade_out": SubResource("Animation_3nli8")
+&"fade_out": SubResource("Animation_3nli8"),
+&"victory": SubResource("Animation_8ky1r")
 }
 
 [node name="ColorRect" type="ColorRect" unique_id=1306272292]

@@ -15,7 +15,7 @@ var round_number:int
 @onready var timer_for_monsters=$Timer
 @onready var shrine = $StaticBody2D/Shrine
 @export var spawn_points:Array[Vector2]
-
+var victory_started := false
 
 func spawn_boss():
 	var boss=boss_instance.instantiate()
@@ -110,11 +110,8 @@ func _process(delta: float) -> void:
 		death()
 		return
 	if round_number<4:
-		if enemy_killed==(4*round_number) and not round_is_termineted:
-			print("hi")
-			round_is_termineted=true
-			end_round()
-		elif shrine.offeredTomatoes >= 10 * round_number and not round_is_termineted:
+	
+		if shrine.offeredTomatoes >= 10 * (0.5*round_number) and not round_is_termineted:
 			print("offered ", shrine.offeredTomatoes, " tomatoes! So ending the round!")
 			round_is_termineted=true
 			end_round()
@@ -122,8 +119,15 @@ func _process(delta: float) -> void:
 		if var_for_boss==0:
 			var_for_boss+=1
 			spawn_boss()
-		if boss_defeated:
+		if boss_defeated and not victory_started:
+			victory_started = true
+			timer_for_monsters.stop()
 			print("Victory")
+			var file=FileAccess.open("res://scripts/round_number.txt",FileAccess.WRITE)
+			file.store_string("1")
+			$CanvasLayer/victory_timer.start()
+			$CanvasLayer/ColorRect/AnimationPlayer2.play("victory")
+			
 func _on_timer_timeout() -> void:
 	spawn_a_monster() # Replace with function body.
 
@@ -134,3 +138,7 @@ func _on_fade_timer_2_timeout() -> void:
 
 func _on_die_timer_timeout() -> void:
 	get_tree().change_scene_to_file("res://scenes/game_over.tscn")
+
+
+func _on_victory_timer_timeout() -> void:
+	get_tree().change_scene_to_file("res://scenes/victory.tscn")

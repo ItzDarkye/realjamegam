@@ -2,16 +2,150 @@
 
 [ext_resource type="Script" uid="uid://c6svad86hw6x4" path="res://scripts/boss_attack.gd" id="1_y7i8w"]
 [ext_resource type="Texture2D" uid="uid://lr333goil55o" path="res://sprites/Red-Circle-Transparent.png" id="2_4s766"]
+[ext_resource type="Texture2D" uid="uid://dx801ltwx7qyt" path="res://sprites/TOMATO_SPLAT0001.png" id="2_s05vl"]
+[ext_resource type="Texture2D" uid="uid://b7a3081cqw6n6" path="res://sprites/TOMATO_SPLAT0002.png" id="3_kgrb5"]
+[ext_resource type="Texture2D" uid="uid://cibpy6q5g14hf" path="res://sprites/TOMATO_SPLAT0003.png" id="4_0lw0i"]
+[ext_resource type="Texture2D" uid="uid://cwro2ovjea1pe" path="res://sprites/TOMATO_SPLAT0004.png" id="5_wyocu"]
+[ext_resource type="Texture2D" uid="uid://bfta3yno4cylo" path="res://sprites/TOMATO_SPLAT0005.png" id="6_5j1ai"]
+[ext_resource type="Texture2D" uid="uid://csruoebvkvuyw" path="res://sprites/TOMATO_SPLAT0006.png" id="7_dqg05"]
+[ext_resource type="Texture2D" uid="uid://bjrepp1bojkaj" path="res://sprites/TOMATO_SPLAT0007.png" id="8_1yt46"]
+[ext_resource type="Texture2D" uid="uid://7tbd2pkffafw" path="res://sprites/TOMATO_SPLAT0008.png" id="9_o8n00"]
+[ext_resource type="Texture2D" uid="uid://c3avtcoi87e3i" path="res://sprites/TOMATO_SPLAT0009.png" id="10_tbh8w"]
+[ext_resource type="Texture2D" uid="uid://lhp31vjtu8fk" path="res://sprites/TOMATO_SPLAT0010.png" id="11_2dur4"]
+[ext_resource type="Texture2D" uid="uid://b4xoi2gwqikkh" path="res://sprites/TOMATO_SPLAT0011.png" id="12_25dpq"]
+[ext_resource type="Texture2D" uid="uid://de8o6uf17a5d6" path="res://sprites/TOMATO_SPLAT0012.png" id="13_6kkr2"]
+[ext_resource type="Texture2D" uid="uid://qyhu68pm8f14" path="res://sprites/TOMATO_SPLAT0013.png" id="14_ftcq6"]
+[ext_resource type="Texture2D" uid="uid://xgulqpsbcwrk" path="res://sprites/TOMATO_SPLAT0014.png" id="15_k4xfh"]
+[ext_resource type="Texture2D" uid="uid://qgueedd32in8" path="res://sprites/TOMATO_SPLAT0015.png" id="16_7ssa3"]
+[ext_resource type="Texture2D" uid="uid://cjeh5aky1bl8e" path="res://sprites/TOMATO_SPLAT0016.png" id="17_2id04"]
+[ext_resource type="Texture2D" uid="uid://dxtk6qpipybue" path="res://sprites/TOMATO_SPLAT0017.png" id="18_scpk3"]
+[ext_resource type="Texture2D" uid="uid://bdgtcrl4ks385" path="res://sprites/TOMATO_SPLAT0018.png" id="19_bltom"]
+[ext_resource type="Texture2D" uid="uid://b3aspn610i14e" path="res://sprites/TOMATO_SPLAT0019.png" id="20_xqyto"]
+[ext_resource type="Texture2D" uid="uid://b6fi4omdibufi" path="res://sprites/TOMATO_SPLAT0020.png" id="21_5b0hg"]
+[ext_resource type="Texture2D" uid="uid://c0futdwssdhiv" path="res://sprites/TOMATO_SPLAT0021.png" id="22_t0f7w"]
+[ext_resource type="Texture2D" uid="uid://ciheo8yqijhjn" path="res://sprites/TOMATO_SPLAT0022.png" id="23_rjweq"]
+[ext_resource type="Texture2D" uid="uid://cpnqn3h14idv5" path="res://sprites/TOMATO_SPLAT0023.png" id="24_3ao17"]
+[ext_resource type="Texture2D" uid="uid://dmxj3d4xyfmb3" path="res://sprites/TOMATO_SPLAT0024.png" id="25_ayska"]
+[ext_resource type="Texture2D" uid="uid://c87wuylp7x7wk" path="res://sprites/TOMATO_SPLAT0025.png" id="26_1lds8"]
+[ext_resource type="Texture2D" uid="uid://d2rshr0qd8ltx" path="res://sprites/TOMATO_SPLAT0026.png" id="27_f0801"]
+[ext_resource type="Texture2D" uid="uid://dvtiourr0uifp" path="res://sprites/TOMATO_SPLAT0027.png" id="28_f5ye4"]
+[ext_resource type="Texture2D" uid="uid://bk6xqw106n4ja" path="res://sprites/TOMATO_SPLAT0028.png" id="29_wqlbs"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e7p64"]
+animations = [{
+"frames": [],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_s05vl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_kgrb5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_0lw0i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_wyocu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_5j1ai")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_dqg05")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_1yt46")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_o8n00")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_tbh8w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_2dur4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_25dpq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_6kkr2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_ftcq6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_k4xfh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_7ssa3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_2id04")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_scpk3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_bltom")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_xqyto")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_5b0hg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_t0f7w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_rjweq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_3ao17")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_ayska")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_1lds8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_f0801")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_f5ye4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_wqlbs")
+}],
+"loop": 0,
+"name": &"fall",
+"speed": 32.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3ai1g"]
-radius = 131.0
+radius = 186.3384
 
 [node name="Area2D" type="Area2D" unique_id=1758755508]
 collision_layer = 4
 monitoring = false
 script = ExtResource("1_y7i8w")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=655788616]
+position = Vector2(0, -342.47)
+sprite_frames = SubResource("SpriteFrames_e7p64")
+animation = &"fall"
+autoplay = "default"
+frame = 27
+frame_progress = 1.0
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2049609661]
+position = Vector2(-1.26, 0)
 scale = Vector2(0.9, 0.9)
 shape = SubResource("CircleShape2D_3ai1g")
 
@@ -20,17 +154,22 @@ wait_time = 2.0
 one_shot = true
 autostart = true
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2147310278]
-modulate = Color(1, 1, 1, 0.3019608)
-position = Vector2(0.49999142, 2.0000136)
-scale = Vector2(0.49804688, 0.48046878)
-texture = ExtResource("2_4s766")
-
 [node name="Timer2" type="Timer" parent="." unique_id=113253674]
 wait_time = 2.3
 one_shot = true
 autostart = true
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1306390698]
+
+[node name="RedCircleTransparent" type="Sprite2D" parent="." unique_id=656936567]
+modulate = Color(1, 1, 1, 0.15294118)
+position = Vector2(3.4332275e-05, 1.2378731)
+scale = Vector2(0.747, 0.739)
+texture = ExtResource("2_4s766")
+
+[node name="Timer3" type="Timer" parent="." unique_id=1647826088]
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
+[connection signal="timeout" from="Timer3" to="." method="_on_timer_3_timeout"]

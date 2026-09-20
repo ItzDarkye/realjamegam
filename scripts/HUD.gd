@@ -21,9 +21,5 @@ func hud_flash() -> void:
 		$Panel.modulate = Color(1, 1, 1, 1)
 		await get_tree().create_timer(0.35).timeout
 
-	while bar.time_to_notimm:
-		$ImmortalBar.modulate = Color(1, 0, 0, 1)
-		await get_tree().create_timer(1).timeout
-		$ImmortalBar.modulate = Color(1, 1, 1, 1)
-		await get_tree().create_timer(1).timeout
+
 		

@@ -49,7 +49,7 @@ func check_collision_whit_player():
 			collider.get_collider().bounce_velocity=-(global_position-collider.get_collider().global_position).normalized()*5000
 func follow_player():
 	var vector_direction_player: Vector2=(-global_position+player.global_position)
-	velocity=vector_direction_player.normalized()*200
+	velocity=vector_direction_player.normalized()*2300
 
 func follow_tree():
 	var vector_direction_tree: Vector2=(-global_position+tree_position).normalized()

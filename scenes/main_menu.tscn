@@ -73,7 +73,6 @@ offset_bottom = 384.0
 [node name="fade_timer" type="Timer" parent="Fade_Transition" unique_id=1560101858]
 
 [node name="Img1009" type="Sprite2D" parent="." unique_id=319015447]
-visible = false
 position = Vector2(179.84818, 122.059654)
 scale = Vector2(1.5340451, 0.6568062)
 texture = ExtResource("9_jk1qb")

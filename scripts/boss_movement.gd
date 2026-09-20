@@ -78,6 +78,7 @@ func hit_player():
 		attack.global_position=player.global_position
 		attack.scale=Vector2(10,10)
 		add_sibling(attack)
+		
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
@@ -93,7 +94,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_timer_timeout() -> void:
 	
-	hit_player() # Replace with function body.
+	hit_player() #
 
 
 func _on_mace_timer_timeout() -> void:
