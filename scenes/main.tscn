@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://cg0kk7ftrorj6" path="res://scenes/tomato_spawner.tscn" id="7_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://k31yx6j2f8k4" path="res://scenes/main_trans.tscn" id="7_tipki"]
+[ext_resource type="PackedScene" uid="uid://8qxuar151ymb" path="res://scenes/shrine.tscn" id="8_tipki"]
 
 [sub_resource type="Resource" id="Resource_tbgi4"]
 script = ExtResource("3_jyhfs")
@@ -83,6 +84,11 @@ scale = Vector2(112.12, 112.12)
 transform = Transform2D(112.12, 0, 0, 112.12, -39999, -10000)
 
 [node name="fade_timer2" type="Timer" parent="CanvasLayer" unique_id=1450231908]
+
+
+[node name="Shrine" parent="." unique_id=1029571952 instance=ExtResource("8_tipki")]
+position = Vector2(587, 589)
+scale = Vector2(3.6194613, 4.178185)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="CanvasLayer/fade_timer2" to="." method="_on_fade_timer_2_timeout"]
