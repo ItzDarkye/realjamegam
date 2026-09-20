@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://8qxuar151ymb"]
 
 [ext_resource type="Script" uid="uid://bwbwkdkf7c4od" path="res://scripts/shrine.gd" id="1_byhlw"]
+[ext_resource type="Texture2D" uid="uid://dlh12chshgmcm" path="res://sprites/tomatoreplacement (2).png" id="2_34a3k"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cg6v3"]
 
@@ -21,3 +22,15 @@ region_rect = Rect2(10, 10, 20, 20)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=110988793]
 scale = Vector2(19.095, 19.095)
 shape = SubResource("RectangleShape2D_t7e38")
+
+[node name="OfferedTomatoCount" type="Label" parent="." unique_id=1805294211]
+offset_top = 191.0
+offset_right = 22.999992
+offset_bottom = 214.0
+scale = Vector2(8.051839, 7.1641164)
+text = "0"
+
+[node name="TomatoSprite" type="Sprite2D" parent="." unique_id=1946744136]
+position = Vector2(-106, 275)
+scale = Vector2(0.048876673, 0.051515117)
+texture = ExtResource("2_34a3k")

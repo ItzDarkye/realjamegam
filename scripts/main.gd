@@ -11,7 +11,7 @@ var boss_defeated=false
 @export var spawn_position_boss:Vector2
 var round_number:int
 @onready var timer_for_monsters=$Timer
-@onready var shrine = $Shrine
+@onready var shrine = $StaticBody2D/Shrine
 @export var spawn_points:Array[Vector2]
 
 

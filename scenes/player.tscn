@@ -136,6 +136,8 @@
 [ext_resource type="Texture2D" uid="uid://blbmh2fr4nrgg" path="res://animations/player_run_animations/roll_right/ROLL_SIDE0013.png" id="58_vsqmb"]
 [ext_resource type="Texture2D" uid="uid://peq2e0oqwxwp" path="res://animations/player_run_animations/roll_right/ROLL_SIDE0014.png" id="59_8cesh"]
 [ext_resource type="Texture2D" uid="uid://dedbnv4jdl28e" path="res://animations/player_run_animations/roll_right/ROLL_SIDE0015.png" id="60_uew4u"]
+[ext_resource type="Texture2D" uid="uid://vagnyygi2wa2" path="res://sprites/veritas.png" id="136_ealyq"]
+[ext_resource type="Script" uid="uid://dytdu2rxchiph" path="res://scripts/tomato_count.gd" id="136_qms75"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nhenn"]
 size = Vector2(92, 116)
@@ -718,6 +720,19 @@ texture = ExtResource("6_tuyoq")
 [node name="Tomatoreplacement(2)3" type="Sprite2D" parent="HUD" unique_id=387686104]
 position = Vector2(22.000008, 89)
 scale = Vector2(0.007874996, 0.007874996)
+texture = ExtResource("6_tuyoq")
+
+[node name="TomatoCount" type="Label" parent="HUD" unique_id=978132401]
+offset_left = 45.0
+offset_top = 101.0
+offset_right = 83.0
+offset_bottom = 124.0
+text = "0"
+script = ExtResource("136_qms75")
+
+[node name="TomatoSprite" type="Sprite2D" parent="HUD" unique_id=336493933]
+position = Vector2(23, 113)
+scale = Vector2(0.010862803, 0.010813394)
 texture = ExtResource("6_tuyoq")
 
 [node name="Hurt_Box" type="Area2D" parent="." unique_id=743152419]
