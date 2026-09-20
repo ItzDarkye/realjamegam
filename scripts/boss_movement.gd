@@ -50,6 +50,8 @@ func check_collision_whit_player():
 			collider.get_collider().bounce_velocity=-(global_position-collider.get_collider().global_position).normalized()*5000
 
 func calculate_mace_position():
+	if not is_instance_valid(player):
+		return
 	mace.position=(player.global_position-global_position).normalized()*75
 	mace.rotation=(player.position-position).angle()
 	
@@ -63,9 +65,14 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	healt_bar.value=health
 func hit_player():
+	
 	timer_for_mace.start()
 	mace.monitoring=true
 	mace_texture.visible=true
+	
+	if not is_instance_valid(player):
+		return
+	
 	if (global_position-player.global_position).length()>1500:
 		var attack=instance.instantiate()
 		attack.global_position=player.global_position
@@ -76,7 +83,6 @@ func hit_player():
 
 func _physics_process(delta: float) -> void:
 	check_if_dead()
-	#print(player.immortal_bar.value)
 	calculate_mace_position()
 	if is_hurt:
 		healt_bar.hurt_animation()
