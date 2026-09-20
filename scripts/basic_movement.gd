@@ -33,15 +33,15 @@ func set_upgrades():
 func position_the_hitbox() -> void:
 	match last_facing:
 		&"right":
-			hit_box.position = Vector2(attack_offset, 0)
+			hit_box.position = Vector2(attack_offset-30, 0)
 			hit_box.rotation = 0
 
 		&"left":
-			hit_box.position = Vector2(-attack_offset-60, 0)
+			hit_box.position = Vector2(-attack_offset-30, 0)
 			hit_box.rotation = PI
 
 		&"front":
-			hit_box.position = Vector2(-50, -30)
+			hit_box.position = Vector2(-50, -10)
 			hit_box.rotation = -PI / 2
 
 		&"back":
