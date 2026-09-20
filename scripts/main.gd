@@ -86,7 +86,7 @@ func _process(delta: float) -> void:
 			print("hi")
 			round_is_termineted=true
 			end_round()
-		elif shrine.offeredTomatoes >= 10 * round_number:
+		elif shrine.offeredTomatoes >= 10 * round_number and not round_is_termineted:
 			print("offered ", shrine.offeredTomatoes, " tomatoes! So ending the round!")
 			round_is_termineted=true
 			end_round()
