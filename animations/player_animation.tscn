@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bjrjalrw1hmah"]
+
+[sub_resource type="Animation" id="Animation_h4hjq"]
+resource_name = "run_front"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_65llk"]
+_data = {
+&"run_front": SubResource("Animation_h4hjq")
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" unique_id=2041380822]
+libraries/ = SubResource("AnimationLibrary_65llk")

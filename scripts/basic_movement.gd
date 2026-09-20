@@ -11,11 +11,16 @@ var type_of_thing="PLAYER"
 @onready var hit_box=$HitBox
 @onready var timer_for_hitbox=$Timer2
 @onready var sprite_of_hitbox=$HitBox/Sprite2D
+@onready var animated_sprite = $AnimatedSprite2D
 
 @onready var tomato_collector=$TomatoCollector
+var is_attacking := false
+var last_facing: StringName = &"front"
+var roll_direction := Vector2.ZERO
 var is_rolling=false
 var contact_enemy=false
 var bounce_velocity
+
 func set_upgrades():
 	var file=FileAccess.open("res://scripts/upgrades.txt", FileAccess.READ)
 	var list_of_upgrades=file.get_csv_line()
@@ -32,7 +37,7 @@ func position_the_hitbox(x_direction,y_direction):
 	if x_direction>0 and y_direction!=0:
 		return
 	hit_box.position=Vector2(x_direction,y_direction)*12
-	hit_box.rotation=-Vector2(x_direction,y_direction).angle()
+	hit_box.rotation=Vector2(x_direction,y_direction).angle()
 func check_contact_with_enemy():
 	if contact_enemy:
 		var tween=create_tween()
@@ -42,26 +47,60 @@ func check_contact_with_enemy():
 	
 func roll_like_crazy(x_direction,y_direction):
 	player_hurt_box.monitoring=false
-	velocity=Vector2(x_direction,y_direction)*velocity_coll*3
+	velocity = roll_direction * velocity_coll * 3
 
 func get_inputs():
 	var x_direction=Input.get_axis("move_left","move_right")
 	var y_direction=Input.get_axis("move_up","move_down")
-	position_the_hitbox(x_direction,y_direction)
+	var direction = Vector2(x_direction, y_direction)
+
+	
+	if not is_rolling and not is_attacking:
+		if direction != Vector2.ZERO:
+			if abs(x_direction) > abs(y_direction):
+				if x_direction < 0:
+					last_facing = &"left"
+				else:
+					last_facing = &"right"
+			else:
+				if y_direction < 0:
+					last_facing = &"front"
+				else:
+					last_facing = &"back"
+					
+			animated_sprite.play("run_" + String(last_facing))
+		else:
+			animated_sprite.play("idle_" + String(last_facing))
+	else:
+		animated_sprite.play()
 	if Input.is_action_just_pressed("roll") and is_rolling==false:
+		if direction != Vector2.ZERO:
+			roll_direction = direction.normalized()
+		else:
+			roll_direction = get_facing_vector()
+		
 		timer_for_roll.start()
-		is_rolling=true
+		is_rolling=true	
+		animated_sprite.play("roll_" + String(last_facing))
 	else:
 		velocity=Vector2(x_direction,y_direction)*velocity_coll
 	if is_rolling:
 		roll_like_crazy(x_direction,y_direction)
-	if Input.is_action_just_pressed("attack") and hit_box.monitoring!=true:
+	if Input.is_action_just_pressed("attack") and hit_box.monitoring!=true and not is_attacking and not is_rolling:
+		is_attacking = true
+		
+		var attack_direction = get_facing_vector()
+		position_the_hitbox(attack_direction.x, attack_direction.y)
+		
 		timer_for_hitbox.start()
 		hit_box.monitoring=true
 		sprite_of_hitbox.visible=true
+		animated_sprite.play("attack_" + String(last_facing))
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	set_upgrades()
+	animated_sprite.play("default")
+
 	
 
 
@@ -103,5 +142,19 @@ func _on_hit_box_body_entered(body: CharacterBody2D) -> void:
 
 
 func _on_timer_2_timeout() -> void:
+	is_attacking = false
 	hit_box.monitoring=false
 	sprite_of_hitbox.visible=false# Replace with function body.
+	
+func get_facing_vector() -> Vector2:
+	match last_facing:
+		&"left":
+			return Vector2.LEFT
+		&"right":
+			return Vector2.RIGHT
+		&"front":
+			return Vector2.UP
+		&"back":
+			return Vector2.DOWN
+
+	return Vector2.DOWN

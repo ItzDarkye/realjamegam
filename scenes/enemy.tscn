@@ -5,25 +5,27 @@
 [ext_resource type="Script" uid="uid://bx4p0g2645phl" path="res://scripts/tomato_collector.gd" id="3_4ra3w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nhenn"]
-size = Vector2(20, 21)
+size = Vector2(138, 135)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nhenn"]
 radius = 149.64
 
 [node name="enemy" type="CharacterBody2D" unique_id=2026744539]
-collision_layer = 2
 platform_on_leave = 2
 platform_floor_layers = 4294967294
 script = ExtResource("1_md0e3")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=275307339]
+texture_filter = 1
+scale = Vector2(4.711, 4.711)
 texture = ExtResource("1_7p1mj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=307515526]
-position = Vector2(0, -1)
+position = Vector2(2, -5.5)
 shape = SubResource("RectangleShape2D_nhenn")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=158296522]
+scale = Vector2(8.36, 8.36)
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1193530956]
