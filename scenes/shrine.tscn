@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://8qxuar151ymb"]
+
+[ext_resource type="Script" uid="uid://bwbwkdkf7c4od" path="res://scripts/shrine.gd" id="1_byhlw"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cg6v3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t7e38"]
+
+[node name="Shrine" type="Node2D" unique_id=1029571952]
+script = ExtResource("1_byhlw")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1256945865]
+texture = SubResource("NoiseTexture2D_cg6v3")
+region_enabled = true
+region_rect = Rect2(10, 10, 20, 20)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=37114754]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=110988793]
+shape = SubResource("RectangleShape2D_t7e38")
