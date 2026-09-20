@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://qbmehgxwnf4n" path="res://sprites/New Piskel-1.png (2).png" id="2_mhmjl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nhenn"]
-size = Vector2(139, 131)
+size = Vector2(139, 56)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nhenn"]
-radius = 149.64
+radius = 441.02835
 
 [node name="enemy" type="CharacterBody2D" unique_id=2026744539]
 collision_layer = 2
@@ -17,11 +17,12 @@ script = ExtResource("1_3neu4")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=275307339]
 texture_filter = 1
-scale = Vector2(4.711, 4.711)
+position = Vector2(0, 2.1879997)
+scale = Vector2(4.711, 2.19925)
 texture = ExtResource("2_mhmjl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=307515526]
-position = Vector2(3.5, -5.5)
+position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_nhenn")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=158296522]

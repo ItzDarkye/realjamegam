@@ -11,6 +11,7 @@ size = Vector2(138, 135)
 radius = 149.64
 
 [node name="enemy" type="CharacterBody2D" unique_id=2026744539]
+collision_layer = 7
 platform_on_leave = 2
 platform_floor_layers = 4294967294
 script = ExtResource("1_md0e3")

@@ -136,6 +136,7 @@
 [ext_resource type="Texture2D" uid="uid://blbmh2fr4nrgg" path="res://animations/player_run_animations/roll_right/ROLL_SIDE0013.png" id="58_vsqmb"]
 [ext_resource type="Texture2D" uid="uid://peq2e0oqwxwp" path="res://animations/player_run_animations/roll_right/ROLL_SIDE0014.png" id="59_8cesh"]
 [ext_resource type="Texture2D" uid="uid://dedbnv4jdl28e" path="res://animations/player_run_animations/roll_right/ROLL_SIDE0015.png" id="60_uew4u"]
+[ext_resource type="Texture2D" uid="uid://vagnyygi2wa2" path="res://sprites/veritas.png" id="136_ealyq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nhenn"]
 size = Vector2(92, 116)
@@ -626,7 +627,7 @@ animations = [{
 size = Vector2(93, 201)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_utj07"]
-size = Vector2(57.75, 89)
+size = Vector2(81.875, 193.5)
 
 [node name="player" type="CharacterBody2D" unique_id=501528392]
 z_index = 3
@@ -736,13 +737,13 @@ collision_mask = 2
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=1493450816]
-position = Vector2(116.875, 0.9999943)
+position = Vector2(88, 4.999996)
 shape = SubResource("RectangleShape2D_utj07")
 
 [node name="Sprite2D" type="Sprite2D" parent="HitBox" unique_id=1328316661]
-visible = false
-position = Vector2(0.96449304, -2.0812726)
-scale = Vector2(0.045271363, 0.2007324)
+position = Vector2(89.999985, 4.999996)
+scale = Vector2(0.3581074, 0.92643404)
+texture = ExtResource("136_ealyq")
 
 [node name="Timer2" type="Timer" parent="." unique_id=291713001]
 wait_time = 0.3

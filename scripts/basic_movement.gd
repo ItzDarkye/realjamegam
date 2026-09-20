@@ -1,6 +1,7 @@
 class_name Player
 extends CharacterBody2D
 var type_of_thing="PLAYER"
+@export var attack_offset := 10.0
 @export var damage=1
 @export var velocity_coll:int
 @onready var timer_for_roll=$Timer
@@ -29,15 +30,25 @@ func set_upgrades():
 	velocity_coll+=int(list_of_upgrades[1])#in the 200
 	damage+=int(list_of_upgrades[2])# int of 1
 	
-func position_the_hitbox(x_direction,y_direction):
-	if x_direction==0 and y_direction==0:
-		return
-	if x_direction<0 and y_direction!=0:
-		return
-	if x_direction>0 and y_direction!=0:
-		return
-	hit_box.position=Vector2(x_direction,y_direction)*12
-	hit_box.rotation=Vector2(x_direction,y_direction).angle()
+func position_the_hitbox() -> void:
+	match last_facing:
+		&"right":
+			hit_box.position = Vector2(attack_offset, 0)
+			hit_box.rotation = 0
+
+		&"left":
+			hit_box.position = Vector2(-attack_offset-60, 0)
+			hit_box.rotation = PI
+
+		&"front":
+			hit_box.position = Vector2(-50, -30)
+			hit_box.rotation = -PI / 2
+
+		&"back":
+			hit_box.position = Vector2(0, attack_offset)
+			hit_box.rotation = PI / 2
+			
+	
 func check_contact_with_enemy():
 	if contact_enemy:
 		var tween=create_tween()
@@ -87,10 +98,11 @@ func get_inputs():
 	if is_rolling:
 		roll_like_crazy(x_direction,y_direction)
 	if Input.is_action_just_pressed("attack") and hit_box.monitoring!=true and not is_attacking and not is_rolling:
+		
 		is_attacking = true
 		
 		var attack_direction = get_facing_vector()
-		position_the_hitbox(attack_direction.x, attack_direction.y)
+		position_the_hitbox()
 		
 		timer_for_hitbox.start()
 		hit_box.monitoring=true
@@ -101,7 +113,8 @@ func _ready() -> void:
 	set_upgrades()
 	animated_sprite.play("default")
 
-	
+func _2on_hit_box_body_entered(body: CharacterBody2D) -> void:
+	print("Hit box touched: ", body.name)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
