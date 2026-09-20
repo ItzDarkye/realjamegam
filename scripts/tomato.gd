@@ -5,6 +5,7 @@ extends Node2D
 @onready var area = $Area2D
 @export var max_scale: Vector2 = Vector2(0.2, 0.2)
 @export var lifeDuration = 10
+@onready var animated_sprite = $AnimatedSprite2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,13 +25,16 @@ func _process(delta: float) -> void:
 	pass
 
 func grow() -> void:
-	var tween = create_tween()
-	tween.tween_property(self, "scale", max_scale, 0.5).from(Vector2.ZERO)
+	#var tween = create_tween()
+	#tween.tween_property(self, "scale", max_scale, 0.5).from(Vector2.ZERO)
+	animated_sprite.play("tomato_spawn")
 
 func shrink_and_destroy() -> void:
-	var tween = create_tween()
-	tween.tween_property(self, "scale", Vector2.ZERO, 0.5)
-	tween.finished.connect(queue_free)
+	#var tween = create_tween()
+	#tween.tween_property(self, "scale", Vector2.ZERO, 0.5)
+	#tween.finished.connect(queue_free)
+	animated_sprite.play_backwards("tomato_spawn")
+	animated_sprite.animation_finished.connect(queue_free)
 
 func _on_body_entered(body : Node2D) -> void:
 	#print("something entered this tomato!")

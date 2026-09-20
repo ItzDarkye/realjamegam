@@ -45,18 +45,54 @@ func check_collision_whit_player():
 			collider.get_collider().contact_enemy=true
 			collider.get_collider().bounce_velocity=-(global_position-collider.get_collider().global_position).normalized()*5000
 func shoot_player():
-	#await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(0.3).timeout
 	#print("shooting arrow")
 	velocity=velocity.normalized()
 	var arrow=instance.instantiate()
 	var vector_direction_player: Vector2=(-global_position+player.global_position)
 	arrow.velocity=vector_direction_player.normalized()*100
 	arrow.position=vector_direction_player.normalized()*10
+	arrow.rotation=vector_direction_player.normalized().angle()
+	if abs(arrow.velocity.x)>abs(arrow.velocity.y):
+		
+		if arrow.velocity.x<0:
+			animated_sprite.play("attack_side")
+			animated_sprite.flip_h=false
+			await animated_sprite.animation_finished
+		else:
+			animated_sprite.flip_h=true
+			animated_sprite.play("attack_side")
+			await animated_sprite.animation_finished
+	else:
+		if arrow.velocity.y>0:
+			
+			animated_sprite.play("attack_front")
+			await animated_sprite.animation_finished
+		else:
+			
+			animated_sprite.play("attack_back")
+			await animated_sprite.animation_finished
+			
 	add_child(arrow)
 
 func follow_tree():
 	var vector_direction_tree: Vector2=(-global_position+tree_position).normalized()
-	velocity=vector_direction_tree*200
+	velocity=vector_direction_tree*800
+	if abs(velocity.x)>abs(velocity.y):
+		
+		if velocity.x<0:
+			animated_sprite.play("walk_side")
+			animated_sprite.flip_h=false
+		else:
+			animated_sprite.flip_h=true
+			animated_sprite.play("walk_side")
+	else:
+		if velocity.y>0:
+			
+			animated_sprite.play("walk_front")
+		else:
+			
+			animated_sprite.play("walk_back")
 
 func giga_chad_enemy_movement():
 	if is_in_view:
@@ -67,7 +103,8 @@ func giga_chad_enemy_movement():
 			timer_is_stopped=false
 			shoot_player()
 	else:
-		follow_tree()
+		if (-global_position+tree_position).length()>800:
+			follow_tree()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	flash_material = animated_sprite.material.duplicate() as ShaderMaterial

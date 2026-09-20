@@ -16,6 +16,7 @@ var round_number:int
 @onready var shrine = $StaticBody2D/Shrine
 @export var spawn_points:Array[Vector2]
 var victory_started := false
+var number_of_monsters=0
 
 func spawn_boss():
 	var boss=boss_instance.instantiate()
@@ -129,7 +130,9 @@ func _process(delta: float) -> void:
 			$CanvasLayer/ColorRect/AnimationPlayer2.play("victory")
 			
 func _on_timer_timeout() -> void:
-	spawn_a_monster() # Replace with function body.
+	if (number_of_monsters-enemy_killed)<4:
+			spawn_a_monster()
+			number_of_monsters+=1 # Replace with function body.
 
 
 func _on_fade_timer_2_timeout() -> void:
