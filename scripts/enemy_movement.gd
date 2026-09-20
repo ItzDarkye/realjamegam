@@ -8,7 +8,10 @@ var is_in_view=false
 @export var tree_position:Vector2
 var type_of_thing="BAD"
 var health=12
-
+var side=false
+var back=false
+var front=false
+var is_attacking=false
 
 var flash_material: ShaderMaterial
 var flash_number := 0
@@ -45,16 +48,64 @@ func check_collision_whit_player():
 	if collider:
 		if collider.get_collider().name=="player":
 			
+			if side:
+				pass
+				animated_sprite.play("attack_side_worm")
+				
+				
+			if front:
+				pass
+				animated_sprite.play("attack_front_worm")
+				
+				
+			if back:
+				animated_sprite.play("attack_back_worm")
+				
+			is_attacking=true
+			
 			collider.get_collider().contact_enemy=true
 			collider.get_collider().bounce_velocity=-(global_position-collider.get_collider().global_position).normalized()*5000
 func follow_player():
 	var vector_direction_player: Vector2=(-global_position+player.global_position)
-	velocity=vector_direction_player.normalized()*200
+	velocity=vector_direction_player.normalized()*800
+	
+	if abs(velocity.x)>abs(velocity.y):
+		side=true
+		front=false
+		back=false
+		if velocity.x<0:
+			animated_sprite.play("worm_animation")
+			animated_sprite.flip_h=false
+		else:
+			animated_sprite.flip_h=true
+			animated_sprite.play("worm_animation")
+	else:
+		if velocity.y>0:
+			front=true
+			back=false
+			side=false
+			animated_sprite.play("front_walk_worm")
+		else:
+			back=true
+			front=false
+			side=false
+			animated_sprite.play("back_walk_worm")
 
 func follow_tree():
 	var vector_direction_tree: Vector2=(-global_position+tree_position).normalized()
-	velocity=vector_direction_tree*200
-
+	velocity=vector_direction_tree*800
+	if velocity.x>velocity.y:
+		if velocity.x<0:
+			animated_sprite.play("worm_animation")
+			animated_sprite.flip_h=false
+		else:
+			animated_sprite.flip_h=true
+			animated_sprite.play("worm_animation")
+	else:
+		if velocity.y>0:
+			animated_sprite.play("front_walk_worm")
+		else:
+			animated_sprite.play("back_walk_worm")
 func giga_chad_enemy_movement():
 	if is_in_view:
 		follow_player()
@@ -70,7 +121,10 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	check_if_dead()
-	giga_chad_enemy_movement()
+	if is_attacking==false:
+		giga_chad_enemy_movement()
+	
+	check_collision_whit_player()
 	#print(str(position))
 	move_and_slide()
 

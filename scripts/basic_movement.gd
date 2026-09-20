@@ -13,7 +13,7 @@ var type_of_thing="PLAYER"
 @onready var timer_for_hitbox=$Timer2
 @onready var sprite_of_hitbox=$HitBox/Sprite2D
 @onready var animated_sprite = $AnimatedSprite2D
-@onready var enemy_1 = get_node("/../")
+#@onready var enemy_1 = get_node("/../")
 
 @onready var tomato_collector=$TomatoCollector
 var is_attacking := false
@@ -52,8 +52,9 @@ func position_the_hitbox() -> void:
 	
 func check_contact_with_enemy():
 	if contact_enemy:
+		print("hi")
 		var tween=create_tween()
-		tween.tween_property(self,"position",bounce_velocity.normalized()*200+global_position,0.3)
+		tween.tween_property(self,"position",(bounce_velocity.normalized()*200+global_position),0.3)
 		#velocity=bounce_velocity
 		contact_enemy=false
 	
@@ -146,7 +147,7 @@ func _on_timer_timeout() -> void:
 func _on_hurt_box_body_entered(body: CharacterBody2D) -> void:
 	#print( body.type_of_thing)
 	if body.type_of_thing=="BAD" or body.type_of_thing=="ARROW":
-		#print(body.name) # Replace with function body.
+		
 		if body.type_of_thing=="ARROW":
 				body.queue_free()
 		if immortal_bar.value<=0:
