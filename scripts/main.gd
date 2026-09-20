@@ -3,6 +3,7 @@ extends Node2D
 @onready var speaker=$AudioStreamPlayer2D
 var round_is_termineted=false
 @onready var player=$player
+var is_dying := false
 var instance1=preload("res://scenes/enemy.tscn")
 var instance2=preload("res://scenes/enemy2.tscn")
 var boss_instance=preload("res://scenes/boss.tscn")
@@ -60,25 +61,38 @@ func spawn_a_monster():
 		add_child(enemy)
 
 func set_timer():
-	var file=FileAccess.open("res://scripts/round_number.txt",FileAccess.READ)
-	round_number=int(file.get_as_text())
-	if round_number<4:
-		speaker.stream=preload("res://sounds/arena.mp3")
+	var file = FileAccess.open("res://scripts/round_number.txt", FileAccess.READ)
+	var saved_round := 1
+
+	if file != null:
+		var round_text := file.get_as_text().strip_edges()
+
+		if round_text.is_valid_int():
+			saved_round = max(1, int(round_text))
+
+	round_number = saved_round
+
+	if round_number < 4:
+		speaker.stream = preload("res://sounds/arena.mp3")
 		speaker.play()
-		speaker.stream.loop=true
-		timer_for_monsters.wait_time=6/round_number
+		speaker.stream.loop = true
+
+		timer_for_monsters.wait_time = 6.0 / round_number
 		timer_for_monsters.start()
 	else:
-		speaker.stream=preload("res://sounds/Boss_Fight.mp3")
+		speaker.stream = preload("res://sounds/Boss_Fight.mp3")
 		speaker.play()
-		speaker.stream.loop=true
+		speaker.stream.loop = true
 func death():
 	player.queue_free()
 	var file=FileAccess.open("res://scripts/round_number.txt",FileAccess.WRITE)
 	file.store_string("1")
 	var files=FileAccess.open("res://scripts/upgrades.txt",FileAccess.WRITE)
 	files.store_string("0,0,0")
-	get_tree().change_scene_to_file("res://scenes/game_over.tscn")
+	$ColorRect/die_timer.start()
+	$ColorRect/AnimationPlayer.play("fade_in")
+
+	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
@@ -89,9 +103,12 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	
+	if is_dying:
+		return
 	
-	if not player.health.is_alive:
+	if is_instance_valid(player) and not player.health.is_alive:
 		death()
+		return
 	if round_number<4:
 		if enemy_killed==(4*round_number) and not round_is_termineted:
 			print("hi")
@@ -113,3 +130,7 @@ func _on_timer_timeout() -> void:
 
 func _on_fade_timer_2_timeout() -> void:
 	get_tree().change_scene_to_file("res://scenes/stat_screen.tscn")
+
+
+func _on_die_timer_timeout() -> void:
+	get_tree().change_scene_to_file("res://scenes/game_over.tscn")

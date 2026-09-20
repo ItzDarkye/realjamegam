@@ -13,7 +13,7 @@ var type_of_thing="PLAYER"
 @onready var timer_for_hitbox=$Timer2
 @onready var sprite_of_hitbox=$HitBox/Sprite2D
 @onready var animated_sprite = $AnimatedSprite2D
-@onready var enemy_1 = get_node("/../")
+
 
 @onready var tomato_collector=$TomatoCollector
 var is_attacking := false
@@ -24,12 +24,24 @@ var contact_enemy=false
 var bounce_velocity
 
 func set_upgrades():
-	var file=FileAccess.open("res://scripts/upgrades.txt", FileAccess.READ)
-	var list_of_upgrades=file.get_csv_line()
-	
-	immortal_bar.timer_time+=int(list_of_upgrades[0]) #seconds
-	velocity_coll+=int(list_of_upgrades[1])#in the 200
-	damage+=int(list_of_upgrades[2])# int of 1
+	var file = FileAccess.open("res://scripts/upgrades.txt", FileAccess.READ)
+
+	if file == null:
+		print("Could not open upgrades.txt")
+		return
+
+	var upgrade_line := file.get_line().strip_edges()
+	var list_of_upgrades := upgrade_line.split(",")
+
+	print("Upgrades read: ", list_of_upgrades)
+
+	if list_of_upgrades.size() != 3:
+		print("Upgrade file error. Expected: 0,0,0")
+		return
+
+	immortal_bar.timer_time += int(list_of_upgrades[0])
+	velocity_coll += int(list_of_upgrades[1])
+	damage += int(list_of_upgrades[2])
 	
 func position_the_hitbox() -> void:
 	match last_facing:
