@@ -11,5 +11,6 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	var collider=move_and_collide(velocity)
 	if collider:
-		if collider.get_collider().name=="Wall":
+		print(collider.get_collider().name)
+		if collider.get_collider().name=="StaticBody2D" or collider.get_collider().name=="player" :
 			queue_free()

@@ -1,11 +1,20 @@
 extends Node2D
 
 @export var button_gropu:ButtonGroup
+@onready var strenght_label=$HUD2/Label
+@onready var speed_label=$HUD2/Label2
+@onready var health_label=$HUD2/Label3
 
+func change_labels_text():
+	var file1=FileAccess.open("res://scripts/upgrades.txt", FileAccess.READ)
+	var array_of_stats=file1.get_csv_line()
+	strenght_label.text=strenght_label.text+array_of_stats[2]
+	speed_label.text=speed_label.text+str(int(array_of_stats[1])/200)
+	health_label.text=health_label.text+str(int(array_of_stats[0])/5)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$CanvasLayer/ColorRect/AnimationPlayer2.play("fade_out")
-	
+	change_labels_text()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
