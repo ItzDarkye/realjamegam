@@ -21,7 +21,7 @@ size = Vector2(162, 299.5)
 [node name="Node2D" type="Node2D" unique_id=1927999117]
 script = ExtResource("1_o6xl0")
 spawn_position_boss = Vector2(0, -2000)
-spawn_points = Array[Vector2]([Vector2(0, -2002)])
+spawn_points = Array[Vector2]([Vector2(0, -2002.64), Vector2(3000, -2002), Vector2(-3000, -2002)])
 
 [node name="player" parent="." unique_id=501528392 instance=ExtResource("1_o5qli")]
 visibility_layer = 515
@@ -84,7 +84,6 @@ scale = Vector2(112.12, 112.12)
 transform = Transform2D(112.12, 0, 0, 112.12, -39999, -10000)
 
 [node name="fade_timer2" type="Timer" parent="CanvasLayer" unique_id=1450231908]
-
 
 [node name="Shrine" parent="." unique_id=1029571952 instance=ExtResource("8_tipki")]
 position = Vector2(587, 589)
