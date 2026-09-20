@@ -7,33 +7,41 @@
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://cg0kk7ftrorj6" path="res://scenes/tomato_spawner.tscn" id="7_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://k31yx6j2f8k4" path="res://scenes/main_trans.tscn" id="7_tipki"]
+[ext_resource type="Texture2D" uid="uid://b10sp8lodompi" path="res://sprites/Captură de ecran 2026-09-20 144320.png" id="8_choun"]
 [ext_resource type="PackedScene" uid="uid://8qxuar151ymb" path="res://scenes/shrine.tscn" id="8_tipki"]
+[ext_resource type="Texture2D" uid="uid://bkf0x2nrf4rlt" path="res://sprites/arena.png" id="9_85g3d"]
 
 [sub_resource type="Resource" id="Resource_tbgi4"]
 script = ExtResource("3_jyhfs")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o6xl0"]
+size = Vector2(162, 299.5)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_e7p64"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t7e38"]
 size = Vector2(162, 307.5)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o6xl0"]
-size = Vector2(162, 299.5)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e7p64"]
+size = Vector2(485.33887, 6254.8438)
 
 [node name="Node2D" type="Node2D" unique_id=1927999117]
 script = ExtResource("1_o6xl0")
 spawn_position_boss = Vector2(0, -2000)
-spawn_points = Array[Vector2]([Vector2(0, -2002)])
+spawn_points = Array[Vector2]([Vector2(0, -2002), Vector2(0, 0)])
 
 [node name="player" parent="." unique_id=501528392 instance=ExtResource("1_o5qli")]
 visibility_layer = 515
 texture_filter = 1
 scale = Vector2(10, 10)
+velocity_coll = 5000
 
 [node name="PhantomCamera2D" type="Node2D" parent="." unique_id=1134445663 node_paths=PackedStringArray("follow_target")]
 top_level = true
 script = ExtResource("2_sugp2")
 follow_mode = 5
 follow_target = NodePath("../player")
-zoom = Vector2(0.065, 0.065)
+zoom = Vector2(0.029, 0.029)
 tween_resource = SubResource("Resource_tbgi4")
 follow_damping = true
 follow_damping_value = Vector2(0.25, 0.25)
@@ -42,25 +50,13 @@ dead_zone_height = 0.063
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1381749005]
 physics_interpolation_mode = 1
-top_level = true
-zoom = Vector2(0.065, 0.065)
+zoom = Vector2(0.029, 0.029)
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D" unique_id=1222323502]
 process_priority = 300
 process_physics_priority = 300
 script = ExtResource("4_jyhfs")
 metadata/_custom_type_script = "uid://bd046eokvcnu2"
-
-[node name="TomatoSpawner" parent="." unique_id=1569575785 node_paths=PackedStringArray("box") instance=ExtResource("7_o6xl0")]
-position = Vector2(265, 268)
-min_size = 0.015
-max_size = 0.025
-box = NodePath("Area2D2/CollisionShape2D")
-
-[node name="Area2D2" type="Area2D" parent="TomatoSpawner" unique_id=1325118570]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TomatoSpawner/Area2D2" unique_id=1874410167]
-shape = SubResource("RectangleShape2D_t7e38")
 
 [node name="TomatoSpawner2" parent="." unique_id=241581123 node_paths=PackedStringArray("box") instance=ExtResource("7_o6xl0")]
 position = Vector2(934, 259)
@@ -85,9 +81,64 @@ transform = Transform2D(112.12, 0, 0, 112.12, -39999, -10000)
 
 [node name="fade_timer2" type="Timer" parent="CanvasLayer" unique_id=1450231908]
 
+[node name="terrain" type="Sprite2D" parent="." unique_id=811685588]
+position = Vector2(-3293, -5255)
+scale = Vector2(545.9536, 375.84787)
+texture = ExtResource("8_choun")
 
-[node name="Shrine" parent="." unique_id=1029571952 instance=ExtResource("8_tipki")]
-position = Vector2(587, 589)
+[node name="Arena" type="Sprite2D" parent="." unique_id=2137152846]
+texture_filter = 1
+position = Vector2(12.000015, 2.9999695)
+scale = Vector2(44.086, 44.086)
+texture = ExtResource("9_85g3d")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1584414657]
+disable_mode = 2
+collision_layer = 255
+physics_material_override = SubResource("PhysicsMaterial_e7p64")
+
+[node name="TomatoSpawner" parent="StaticBody2D" unique_id=1569575785 node_paths=PackedStringArray("box") instance=ExtResource("7_o6xl0")]
+position = Vector2(5000, -5000)
+min_size = 0.015
+max_size = 0.025
+box = NodePath("Area2D2/CollisionShape2D")
+
+[node name="Area2D2" type="Area2D" parent="StaticBody2D/TomatoSpawner" unique_id=1325118570]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/TomatoSpawner/Area2D2" unique_id=1874410167]
+shape = SubResource("RectangleShape2D_t7e38")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D" unique_id=1706738691]
+position = Vector2(-45750.71, 12996.756)
+rotation = -3.1415925
+scale = Vector2(14.7456, 14.7456)
+shape = SubResource("RectangleShape2D_e7p64")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=772230758]
+position = Vector2(-11906, -75.600586)
+scale = Vector2(3.84, 3.84)
+shape = SubResource("RectangleShape2D_e7p64")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1980523099]
+position = Vector2(-867.30066, -11959)
+rotation = 1.5707964
+scale = Vector2(3.84, 3.84)
+shape = SubResource("RectangleShape2D_e7p64")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=951922503]
+position = Vector2(12031, -916.0005)
+rotation = -6.2831855
+scale = Vector2(3.84, 3.84)
+shape = SubResource("RectangleShape2D_e7p64")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=1334524631]
+position = Vector2(263.99988, 11982.998)
+rotation = 1.5707964
+scale = Vector2(3.84, 3.84)
+shape = SubResource("RectangleShape2D_e7p64")
+
+[node name="Shrine" parent="StaticBody2D" unique_id=1029571952 instance=ExtResource("8_tipki")]
+position = Vector2(5051.0005, -10089.001)
 scale = Vector2(3.6194613, 4.178185)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -13,6 +13,10 @@
 [ext_resource type="Texture2D" uid="uid://bels82l1ykri8" path="res://sprites/MENU/F26A5A.png" id="9_c7rj2"]
 [ext_resource type="Texture2D" uid="uid://vagnyygi2wa2" path="res://sprites/veritas.png" id="9_ekh1h"]
 [ext_resource type="ButtonGroup" uid="uid://splff62676xd" path="res://new_button_group_for_upgrade.tres" id="10_h10ah"]
+[ext_resource type="Texture2D" uid="uid://dh0icwoffjipv" path="res://sprites/MENU/upgrade_hud.hover.png" id="12_ac8i1"]
+[ext_resource type="Texture2D" uid="uid://bqfo18t3u5x6j" path="res://sprites/aaef0dd7bf68fc14ea9de7137fbeaec6.png" id="13_u0fr0"]
+[ext_resource type="Texture2D" uid="uid://bpnq155vgkldw" path="res://sprites/MENU/fcb7a8d69ea6ad316210f82c23f1d089 (1).png" id="14_j8s6f"]
+[ext_resource type="Texture2D" uid="uid://cf2bxl75bm5k" path="res://sprites/[CITYPNG.COM]Fresh Red Tomato Slice HD Transparent Background - 2500x2500.png" id="15_3pu73"]
 
 [node name="Node2D" type="Node2D" unique_id=943329975]
 script = ExtResource("1_gyuhm")
@@ -56,28 +60,50 @@ texture_pressed = ExtResource("2_lie50")
 texture_hover = ExtResource("3_ujair")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HUD2" unique_id=344863604]
-offset_left = 331.0
-offset_top = 43.0
-offset_right = 615.0
-offset_bottom = 304.0
+offset_left = 331.45
+offset_top = 32.29
+offset_right = 615.9573
+offset_bottom = 293.29
+scale = Vector2(1.62, 1.62)
 
 [node name="Upgrade1" type="TextureButton" parent="HUD2/HBoxContainer" unique_id=68007190]
 layout_mode = 2
 toggle_mode = true
 button_group = ExtResource("10_h10ah")
 texture_normal = ExtResource("8_yhe4x")
+texture_hover = ExtResource("12_ac8i1")
+
+[node name="Aaef0Dd7Bf68Fc14Ea9De7137Fbeaec6" type="Sprite2D" parent="HUD2/HBoxContainer" unique_id=722965]
+z_index = 100
+position = Vector2(50, 131.302)
+rotation = 2.6179938
+scale = Vector2(0.1733098, 0.17330983)
+texture = ExtResource("13_u0fr0")
 
 [node name="Upgrade2" type="TextureButton" parent="HUD2/HBoxContainer" unique_id=664598876]
 layout_mode = 2
 toggle_mode = true
 button_group = ExtResource("10_h10ah")
 texture_normal = ExtResource("8_yhe4x")
+texture_hover = ExtResource("12_ac8i1")
+
+[node name="Sprite2D" type="Sprite2D" parent="HUD2/HBoxContainer/Upgrade2" unique_id=1256241557]
+position = Vector2(58.660484, 134.38889)
+rotation = -0.34906584
+scale = Vector2(0.15113086, 0.15113086)
+texture = ExtResource("14_j8s6f")
 
 [node name="Upgrade3" type="TextureButton" parent="HUD2/HBoxContainer" unique_id=1771433886]
 layout_mode = 2
 toggle_mode = true
 button_group = ExtResource("10_h10ah")
 texture_normal = ExtResource("8_yhe4x")
+texture_hover = ExtResource("12_ac8i1")
+
+[node name="Sprite2D" type="Sprite2D" parent="HUD2/HBoxContainer/Upgrade3" unique_id=540587996]
+position = Vector2(46.611115, 125.746895)
+scale = Vector2(0.054646563, 0.054646563)
+texture = ExtResource("15_3pu73")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1473344091]
 offset = Vector2(350.565, 195.585)
@@ -86,11 +112,13 @@ zoom = Vector2(1.65, 1.65)
 [node name="HUD3" type="CanvasLayer" parent="." unique_id=624791264]
 
 [node name="F26a5a" type="Sprite2D" parent="HUD3" unique_id=1197895483]
-position = Vector2(425, 300)
+visible = false
+position = Vector2(427.00003, 309)
 scale = Vector2(1.2529167, 1.3492063)
 texture = ExtResource("9_c7rj2")
 
 [node name="Veritas" type="Sprite2D" parent="HUD3" unique_id=1381894090]
+visible = false
 position = Vector2(174, 568)
 texture = ExtResource("9_ekh1h")
 

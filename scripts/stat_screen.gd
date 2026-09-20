@@ -24,13 +24,13 @@ func _on_next_button_pressed() -> void:
 		var speed=array_of_stats[1]
 		var damage=array_of_stats[2]
 		match upgrade_button.name:
-			"Upgrade1":
+			"Upgrade3":
 				file.store_string(str(int(immortal_bar)+5)+","+speed+","+damage)
 				get_tree().change_scene_to_file("res://scenes/main.tscn")
 			"Upgrade2":
 				file.store_string(immortal_bar+","+str(int(speed)+200)+","+damage)
 				get_tree().change_scene_to_file("res://scenes/main.tscn")
-			"Upgrade3":
+			"Upgrade1":
 				file.store_string(immortal_bar+","+speed+","+str(int(damage)+1))
 				get_tree().change_scene_to_file("res://scenes/main.tscn")
 

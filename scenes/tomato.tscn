@@ -4,13 +4,16 @@
 [ext_resource type="Script" uid="uid://d1wtcw1sfuse2" path="res://scripts/tomato.gd" id="2_pjj58"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t7e38"]
-radius = 1070.125
-height = 2692.25
+radius = 2347.0237
+height = 6504.857
 
 [node name="Tomato" type="Node2D" unique_id=1102157171]
+scale = Vector2(2.725, 2.725)
 script = ExtResource("2_pjj58")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=856503776]
+position = Vector2(0.00048822165, -0.00048744678)
+scale = Vector2(2.3565, 2.3565)
 texture = ExtResource("1_tsxsy")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=416721658]
@@ -18,7 +21,7 @@ position = Vector2(-7, 6)
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1285421982]
-position = Vector2(-29, 167.00002)
+position = Vector2(7, 355.47)
 rotation = -1.5746015
 scale = Vector2(0.9999989, 1)
 shape = SubResource("CapsuleShape2D_t7e38")

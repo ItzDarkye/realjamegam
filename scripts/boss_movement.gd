@@ -3,7 +3,7 @@ extends CharacterBody2D
 @onready var player=$/root/Node2D/player
 @onready var tomato_collector=$TomatoCollector
 var instance=preload("res://scenes/boss_attack.tscn")
-@onready var healt_bar=$ProgressBar
+@onready var healt_bar=$CanvasLayer/ProgressBar
 var type_of_thing="BAD"
 var health=14
 var is_hurt=false

@@ -10,6 +10,8 @@
 script = ExtResource("1_byhlw")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1256945865]
+position = Vector2(-4.053116e-06, -3.8146973e-06)
+scale = Vector2(19.15, 19.15)
 texture = SubResource("NoiseTexture2D_cg6v3")
 region_enabled = true
 region_rect = Rect2(10, 10, 20, 20)
@@ -17,4 +19,5 @@ region_rect = Rect2(10, 10, 20, 20)
 [node name="Area2D" type="Area2D" parent="." unique_id=37114754]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=110988793]
+scale = Vector2(19.095, 19.095)
 shape = SubResource("RectangleShape2D_t7e38")
