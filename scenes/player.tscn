@@ -148,7 +148,7 @@
 [ext_resource type="Script" uid="uid://dytdu2rxchiph" path="res://scripts/tomato_count.gd" id="136_qms75"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nhenn"]
-size = Vector2(92, 116)
+size = Vector2(92, 209)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e7p64"]
 animations = [{
@@ -648,7 +648,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mvhug"]
-size = Vector2(93, 201)
+size = Vector2(145, 245)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_utj07"]
 size = Vector2(81.875, 193.5)
@@ -666,7 +666,7 @@ script = ExtResource("2_dqkch")
 metadata/_custom_type_script = "uid://b8dqb1brw1i88"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=870358834]
-position = Vector2(-4, 48)
+position = Vector2(-4, 1.5)
 shape = SubResource("RectangleShape2D_nhenn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1731555035]
@@ -764,8 +764,9 @@ collision_layer = 128
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurt_Box" unique_id=900821173]
-position = Vector2(-4.5, 8.5)
+position = Vector2(-0.5, 3.5)
 shape = SubResource("RectangleShape2D_mvhug")
+debug_color = Color(0.26965722, 0.6244476, 0.3074167, 0.41960785)
 
 [node name="HitBox" type="Area2D" parent="." unique_id=1631136940]
 position = Vector2(-3, 7)
@@ -777,6 +778,7 @@ monitoring = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=1493450816]
 position = Vector2(104, 3.9999955)
 shape = SubResource("RectangleShape2D_utj07")
+debug_color = Color(0.98341423, 0, 0.35757783, 0.41960785)
 
 [node name="Sprite2D" type="Sprite2D" parent="HitBox" unique_id=1328316661]
 position = Vector2(103.417816, 4.0908966)

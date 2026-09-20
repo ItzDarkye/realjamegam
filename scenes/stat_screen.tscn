@@ -17,7 +17,23 @@
 [ext_resource type="Texture2D" uid="uid://bqfo18t3u5x6j" path="res://sprites/aaef0dd7bf68fc14ea9de7137fbeaec6.png" id="13_u0fr0"]
 [ext_resource type="Texture2D" uid="uid://bpnq155vgkldw" path="res://sprites/MENU/fcb7a8d69ea6ad316210f82c23f1d089 (1).png" id="14_j8s6f"]
 [ext_resource type="Texture2D" uid="uid://cf2bxl75bm5k" path="res://sprites/[CITYPNG.COM]Fresh Red Tomato Slice HD Transparent Background - 2500x2500.png" id="15_3pu73"]
+[ext_resource type="FontFile" uid="uid://p4vggq1s5368" path="res://Pixel Georgia.ttf" id="16_rvjhx"]
 [ext_resource type="AudioStream" uid="uid://dif2fdwr6qlev" path="res://sounds/menu.mp3" id="18_3pu73"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_667el"]
+font = ExtResource("16_rvjhx")
+font_size = 21
+font_color = Color(1, 0.654902, 0.39607844, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ydclu"]
+font = ExtResource("16_rvjhx")
+font_size = 21
+font_color = Color(1, 0.654902, 0.39607844, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3pl3b"]
+font = ExtResource("16_rvjhx")
+font_size = 21
+font_color = Color(1, 0.654902, 0.39607844, 1)
 
 [node name="Node2D" type="Node2D" unique_id=943329975]
 script = ExtResource("1_gyuhm")
@@ -32,7 +48,7 @@ transform = Transform2D(7.2, 0, 0, 7.2, 0, 0)
 layer = 2
 
 [node name="Hud" type="Sprite2D" parent="HUD2" unique_id=1230297513]
-position = Vector2(416.327, 323.5)
+position = Vector2(418, 330)
 scale = Vector2(1.6613079, 1.6225001)
 texture = ExtResource("1_p3w7n")
 
@@ -105,6 +121,30 @@ texture_hover = ExtResource("12_ac8i1")
 position = Vector2(46.611115, 125.746895)
 scale = Vector2(0.054646563, 0.054646563)
 texture = ExtResource("15_3pu73")
+
+[node name="Label" type="Label" parent="HUD2" unique_id=1537447313]
+offset_left = 38.0
+offset_top = 76.0
+offset_right = 182.0
+offset_bottom = 99.0
+text = "Strenght + "
+label_settings = SubResource("LabelSettings_667el")
+
+[node name="Label2" type="Label" parent="HUD2" unique_id=1079639146]
+offset_left = 38.0
+offset_top = 123.0
+offset_right = 182.0
+offset_bottom = 146.0
+text = "Speed + "
+label_settings = SubResource("LabelSettings_ydclu")
+
+[node name="Label3" type="Label" parent="HUD2" unique_id=1634818507]
+offset_left = 36.0
+offset_top = 168.0
+offset_right = 209.0
+offset_bottom = 191.0
+text = "Immortality Bar + "
+label_settings = SubResource("LabelSettings_3pl3b")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1473344091]
 offset = Vector2(350.565, 195.585)
