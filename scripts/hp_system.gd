@@ -7,15 +7,17 @@ signal damage_taken(amount: int, source: Node2D)
 signal immortal_changed(new_imm: float, max_imm: float)
 signal died()
 
-
+@export var hit_cooldown := 0.5
 @export var max_health: int = 10
 @export var start_at_max: bool = true
 @export var max_imm: float = 100
 @export var start_at_max_imm: bool = true
 
+
 var current_health: int
 var current_imm: float
 var is_alive: bool = true
+var is_invulnerable := false
 
 
 func _ready() -> void:
@@ -35,12 +37,19 @@ func take_damage(amount: int, source: Node2D = null) -> void:
 		return
 
 	var actual_damage = max(0, amount)
+	
+	if actual_damage == 0:
+		return
+	
 	current_health = max(0, current_health - actual_damage)
 
 	damage_taken.emit(actual_damage, source)
 	health_changed.emit(current_health, max_health)
 
 	print(get_parent().name, " took ", actual_damage, " damage. Health: ", current_health, "/", max_health)
+	
+	
+
 
 	if current_health <= 0:
 		_handle_death()

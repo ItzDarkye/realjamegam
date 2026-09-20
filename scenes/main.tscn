@@ -8,9 +8,9 @@
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://cg0kk7ftrorj6" path="res://scenes/tomato_spawner.tscn" id="7_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://k31yx6j2f8k4" path="res://scenes/main_trans.tscn" id="7_tipki"]
-[ext_resource type="Texture2D" uid="uid://b10sp8lodompi" path="res://sprites/Captură de ecran 2026-09-20 144320.png" id="8_choun"]
 [ext_resource type="PackedScene" uid="uid://8qxuar151ymb" path="res://scenes/shrine.tscn" id="8_tipki"]
-[ext_resource type="Texture2D" uid="uid://bkf0x2nrf4rlt" path="res://sprites/arena.png" id="9_85g3d"]
+[ext_resource type="Texture2D" uid="uid://3qwsp0ymxy6f" path="res://sprites/bigarena.png" id="11_ya4ey"]
+[ext_resource type="Texture2D" uid="uid://b4lbo72tayj7d" path="res://sprites/SHRINE0001.png" id="12_eb6dy"]
 
 [sub_resource type="Resource" id="Resource_tbgi4"]
 script = ExtResource("3_jyhfs")
@@ -28,6 +28,24 @@ script = ExtResource("1_o6xl0")
 spawn_position_boss = Vector2(0, -2000)
 spawn_points = Array[Vector2]([Vector2(8000, -7300), Vector2(9000, -8000), Vector2(8000, 8500), Vector2(-8000, 8500)])
 
+[node name="player" parent="." unique_id=501528392 instance=ExtResource("1_o5qli")]
+visibility_layer = 515
+z_index = 4096
+texture_filter = 1
+scale = Vector2(10, 10)
+velocity_coll = 5000
+
+[node name="CanvasLayer" parent="." unique_id=242051401 instance=ExtResource("7_tipki")]
+visible = false
+offset = Vector2(-39999, -10000)
+scale = Vector2(112.12, 112.12)
+transform = Transform2D(112.12, 0, 0, 112.12, -39999, -10000)
+
+[node name="fade_timer2" type="Timer" parent="CanvasLayer" unique_id=1450231908]
+
+[node name="victory_timer" type="Timer" parent="CanvasLayer" unique_id=1747836069]
+wait_time = 1.706
+
 [node name="ColorRect" parent="." unique_id=853826384 instance=ExtResource("2_ya4ey")]
 top_level = true
 z_index = 200
@@ -42,18 +60,12 @@ offset_bottom = 24447.0
 volume_db = -51.515
 max_distance = 140000.0
 
-[node name="player" parent="." unique_id=501528392 instance=ExtResource("1_o5qli")]
-visibility_layer = 515
-texture_filter = 1
-scale = Vector2(10, 10)
-velocity_coll = 5000
-
 [node name="PhantomCamera2D" type="Node2D" parent="." unique_id=1134445663 node_paths=PackedStringArray("follow_target")]
 top_level = true
 script = ExtResource("2_sugp2")
 follow_mode = 5
 follow_target = NodePath("../player")
-zoom = Vector2(0.029, 0.029)
+zoom = Vector2(0.034, 0.034)
 tween_resource = SubResource("Resource_tbgi4")
 follow_damping = true
 follow_damping_value = Vector2(0.25, 0.25)
@@ -62,7 +74,8 @@ dead_zone_height = 0.063
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1381749005]
 physics_interpolation_mode = 1
-zoom = Vector2(0.029, 0.029)
+top_level = true
+zoom = Vector2(0.034, 0.034)
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D" unique_id=1222323502]
 process_priority = 300
@@ -72,25 +85,6 @@ metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
 [node name="Timer" type="Timer" parent="." unique_id=1139888266]
 wait_time = 6.0
-
-[node name="CanvasLayer" parent="." unique_id=242051401 instance=ExtResource("7_tipki")]
-visible = false
-offset = Vector2(-39999, -10000)
-scale = Vector2(112.12, 112.12)
-transform = Transform2D(112.12, 0, 0, 112.12, -39999, -10000)
-
-[node name="fade_timer2" type="Timer" parent="CanvasLayer" unique_id=1450231908]
-
-[node name="terrain" type="Sprite2D" parent="." unique_id=811685588]
-position = Vector2(-2517, -4964)
-scale = Vector2(545.9536, 375.84787)
-texture = ExtResource("8_choun")
-
-[node name="Arena" type="Sprite2D" parent="." unique_id=2137152846]
-texture_filter = 1
-position = Vector2(12.000015, 2.9999695)
-scale = Vector2(44.086, 44.086)
-texture = ExtResource("9_85g3d")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1584414657]
 disable_mode = 2
@@ -143,6 +137,21 @@ shape = SubResource("RectangleShape2D_e7p64")
 position = Vector2(5051.0005, -10089.001)
 scale = Vector2(3.6194613, 4.178185)
 
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1183415988]
+top_level = true
+z_index = 4095
+texture_filter = 1
+position = Vector2(5004, -13089.999)
+scale = Vector2(11.852257, 11.852258)
+texture = ExtResource("12_eb6dy")
+region_rect = Rect2(10, 10, 20, 20)
+
+[node name="Bigarena" type="Sprite2D" parent="." unique_id=1344916297]
+position = Vector2(-10, -7)
+scale = Vector2(56.616, 56.616)
+texture = ExtResource("11_ya4ey")
+
+[connection signal="timeout" from="CanvasLayer/fade_timer2" to="." method="_on_fade_timer_2_timeout"]
+[connection signal="timeout" from="CanvasLayer/victory_timer" to="." method="_on_victory_timer_timeout"]
 [connection signal="timeout" from="ColorRect/die_timer" to="." method="_on_die_timer_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="timeout" from="CanvasLayer/fade_timer2" to="." method="_on_fade_timer_2_timeout"]

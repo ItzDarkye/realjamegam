@@ -2,7 +2,7 @@ extends ProgressBar
 
 signal time_to_notimm
 
-@export var timer_time: float = 15.0
+@export var timer_time: float = 5
 @export var tomato_time: float = 3.0
 
 var time_left: float

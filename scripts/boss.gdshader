@@ -6,6 +6,6 @@ void fragment() {
 	COLOR = texture(TEXTURE, UV) * COLOR;
 
 	if (flash) {
-		COLOR.rgb = vec3(1.0);
+		COLOR.rgb = vec3(0.5);
 	}
 }

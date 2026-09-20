@@ -96,7 +96,7 @@ func follow_tree():
 
 func giga_chad_enemy_movement():
 	if is_in_view:
-		velocity=velocity.normalized()
+		var velocity=1800
 		if is_in_view and timer_is_stopped:
 		
 			timer_for_arrows.start()

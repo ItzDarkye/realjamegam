@@ -1,9 +1,12 @@
 extends Area2D
 
-
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	$Timer3.wait_time = 1.6
+	$Timer3.one_shot = true
+	$Timer3.start()
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -32,3 +35,9 @@ func _on_body_entered(body: CharacterBody2D) -> void:
 
 func _on_timer_2_timeout() -> void:
 	queue_free() # Replace with function body.
+	
+
+
+
+func _on_timer_3_timeout() -> void:
+	animated_sprite.play("fall")
