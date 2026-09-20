@@ -11,6 +11,7 @@ var boss_defeated=false
 @export var spawn_position_boss:Vector2
 var round_number:int
 @onready var timer_for_monsters=$Timer
+@onready var shrine = $Shrine
 @export var spawn_points:Array[Vector2]
 
 
@@ -83,6 +84,10 @@ func _process(delta: float) -> void:
 	if round_number<4:
 		if enemy_killed==(4*round_number) and not round_is_termineted:
 			print("hi")
+			round_is_termineted=true
+			end_round()
+		elif shrine.offeredTomatoes >= 10 * round_number:
+			print("offered ", shrine.offeredTomatoes, " tomatoes! So ending the round!")
 			round_is_termineted=true
 			end_round()
 	else:
