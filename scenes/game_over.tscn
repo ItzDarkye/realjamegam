@@ -1,22 +1,101 @@
 [gd_scene format=3 uid="uid://cx0rlcnnvkn3e"]
 
+[ext_resource type="Script" uid="uid://kar8kvth36u0" path="res://scripts/game_over.gd" id="1_tbwuq"]
 [ext_resource type="AudioStream" uid="uid://j5mc4yane5w0" path="res://sounds/death_Upgrade_Menu.mp3" id="1_xeevv"]
+[ext_resource type="FontFile" uid="uid://dpma8v2h0ea0j" path="res://addons/Pixel Georgia.ttf" id="2_wqhvx"]
+
+[sub_resource type="Animation" id="Animation_racf3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.41568628, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_7m3ot"]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.41568628, 0, 0, 1), Color(0.41568628, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_tbwuq"]
+resource_name = "fade_to_main"
+length = 1.5333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.41568628, 0, 0, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v3hpu"]
+_data = {
+&"RESET": SubResource("Animation_racf3"),
+&"default": SubResource("Animation_7m3ot"),
+&"fade_to_main": SubResource("Animation_tbwuq")
+}
 
 [node name="Node2D" type="Node2D" unique_id=180939707]
+script = ExtResource("1_tbwuq")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1727460394]
+offset_left = -1052.0
+offset_top = -778.0
+offset_right = 970.0
+offset_bottom = 618.0
+color = Color(0.41568628, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect" unique_id=439385308]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_v3hpu")
+
+[node name="Timer" type="Timer" parent="ColorRect" unique_id=1692097020]
+wait_time = 4.0
+
+[node name="Timer2" type="Timer" parent="ColorRect" unique_id=244323947]
+wait_time = 2.0
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=573642214]
 
 [node name="Label" type="Label" parent="." unique_id=75618355]
-offset_left = -141.0
-offset_top = -265.0
-offset_right = 135.0
-offset_bottom = -58.0
+offset_left = -692.0
+offset_top = -264.0
+offset_right = 683.0
+offset_bottom = -84.0
+theme_override_fonts/font = ExtResource("2_wqhvx")
+theme_override_font_sizes/font_size = 140
 text = "GAME OVER"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 1
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=573642214]
-
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1748517173]
 stream = ExtResource("1_xeevv")
+volume_db = -8.748
 autoplay = true
 parameters/looping = true
+
+[connection signal="timeout" from="ColorRect/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="ColorRect/Timer2" to="." method="_on_timer_2_timeout"]

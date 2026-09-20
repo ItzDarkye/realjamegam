@@ -23,9 +23,11 @@ func _process(delta: float) -> void:
 func spawnTomato():
 	#print("Spawning tomato!")
 	var newTomato = tomato.instantiate()
-	var dims : Vector2 = box.shape.size
-	newTomato.position = Vector2(randf_range(0.0, dims.x), randf_range(0.0, dims.y))
-	#print("newTomato.position: ", newTomato.position)
+	var base = box.global_position
+	var dims : Vector2 = box.shape.size * box.global_scale
+	#print("box.global_scale: ", box.global_scale)
+	var offset = Vector2(randf_range(-dims.x, dims.x) / 2, randf_range(-dims.y, dims.y) / 2)
+	newTomato.position = base + offset
+	print("newTomato.position: ", newTomato.position)
 	newTomato.max_scale = Vector2(randf_range(min_size, max_size), randf_range(min_size, max_size))
 	add_child(newTomato)
-	

@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://66map821y2" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://ch3ui6njmqpjv" path="res://scripts/main.gd" id="1_o6xl0"]
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_sugp2"]
+[ext_resource type="PackedScene" uid="uid://bbgjkvegugjuw" path="res://scenes/die_trans.tscn" id="2_ya4ey"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_jyhfs"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://cg0kk7ftrorj6" path="res://scenes/tomato_spawner.tscn" id="7_o6xl0"]
@@ -14,13 +15,10 @@
 [sub_resource type="Resource" id="Resource_tbgi4"]
 script = ExtResource("3_jyhfs")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o6xl0"]
-size = Vector2(162, 299.5)
-
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_e7p64"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t7e38"]
-size = Vector2(162, 307.5)
+size = Vector2(2128.622, 2112.4854)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e7p64"]
 size = Vector2(485.33887, 6254.8438)
@@ -30,7 +28,18 @@ script = ExtResource("1_o6xl0")
 spawn_position_boss = Vector2(0, -2000)
 spawn_points = Array[Vector2]([Vector2(8000, -7300), Vector2(9000, -8000), Vector2(8000, 8500), Vector2(-8000, 8500)])
 
+[node name="ColorRect" parent="." unique_id=853826384 instance=ExtResource("2_ya4ey")]
+top_level = true
+z_index = 200
+offset_left = -29287.0
+offset_top = -19511.0
+offset_right = 73153.0
+offset_bottom = 24447.0
+
+[node name="die_timer" type="Timer" parent="ColorRect" unique_id=1910691785]
+
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1957281323]
+volume_db = -51.515
 max_distance = 140000.0
 
 [node name="player" parent="." unique_id=501528392 instance=ExtResource("1_o5qli")]
@@ -53,7 +62,6 @@ dead_zone_height = 0.063
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1381749005]
 physics_interpolation_mode = 1
-top_level = true
 zoom = Vector2(0.029, 0.029)
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D" unique_id=1222323502]
@@ -61,18 +69,6 @@ process_priority = 300
 process_physics_priority = 300
 script = ExtResource("4_jyhfs")
 metadata/_custom_type_script = "uid://bd046eokvcnu2"
-
-[node name="TomatoSpawner2" parent="." unique_id=241581123 node_paths=PackedStringArray("box") instance=ExtResource("7_o6xl0")]
-position = Vector2(934, 259)
-min_size = 0.015
-max_size = 0.025
-box = NodePath("Area2D2/CollisionShape2D")
-
-[node name="Area2D2" type="Area2D" parent="TomatoSpawner2" unique_id=748058204]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TomatoSpawner2/Area2D2" unique_id=366266647]
-position = Vector2(-1, 3)
-shape = SubResource("RectangleShape2D_o6xl0")
 
 [node name="Timer" type="Timer" parent="." unique_id=1139888266]
 wait_time = 6.0
@@ -86,7 +82,7 @@ transform = Transform2D(112.12, 0, 0, 112.12, -39999, -10000)
 [node name="fade_timer2" type="Timer" parent="CanvasLayer" unique_id=1450231908]
 
 [node name="terrain" type="Sprite2D" parent="." unique_id=811685588]
-position = Vector2(-3293, -5255)
+position = Vector2(-2517, -4964)
 scale = Vector2(545.9536, 375.84787)
 texture = ExtResource("8_choun")
 
@@ -103,14 +99,16 @@ collision_mask = 32769
 physics_material_override = SubResource("PhysicsMaterial_e7p64")
 
 [node name="TomatoSpawner" parent="StaticBody2D" unique_id=1569575785 node_paths=PackedStringArray("box") instance=ExtResource("7_o6xl0")]
-position = Vector2(5000, -5000)
-min_size = 0.015
-max_size = 0.025
+min_size = 0.1
+max_size = 0.15
 box = NodePath("Area2D2/CollisionShape2D")
 
 [node name="Area2D2" type="Area2D" parent="StaticBody2D/TomatoSpawner" unique_id=1325118570]
+scale = Vector2(1.065, 1.065)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/TomatoSpawner/Area2D2" unique_id=1874410167]
+position = Vector2(-122.84329, -178.7099)
+scale = Vector2(8, 8)
 shape = SubResource("RectangleShape2D_t7e38")
 
 [node name="Wall5" type="CollisionShape2D" parent="StaticBody2D" unique_id=1334524631]
@@ -145,5 +143,6 @@ shape = SubResource("RectangleShape2D_e7p64")
 position = Vector2(5051.0005, -10089.001)
 scale = Vector2(3.6194613, 4.178185)
 
+[connection signal="timeout" from="ColorRect/die_timer" to="." method="_on_die_timer_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="CanvasLayer/fade_timer2" to="." method="_on_fade_timer_2_timeout"]

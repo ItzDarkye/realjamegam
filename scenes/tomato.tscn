@@ -1,27 +1,97 @@
 [gd_scene format=3 uid="uid://bgm0418a3pawb"]
 
-[ext_resource type="Texture2D" uid="uid://dlh12chshgmcm" path="res://sprites/tomatoreplacement (2).png" id="1_tsxsy"]
 [ext_resource type="Script" uid="uid://d1wtcw1sfuse2" path="res://scripts/tomato.gd" id="2_pjj58"]
+[ext_resource type="Texture2D" uid="uid://c8gei7b4a13vc" path="res://animations/tomato_spawn_animations/TOMATO0001.png" id="3_gnycb"]
+[ext_resource type="Texture2D" uid="uid://n66en12xeowf" path="res://animations/tomato_spawn_animations/TOMATO0002.png" id="4_p1vwv"]
+[ext_resource type="Texture2D" uid="uid://b1deq4cyiia3" path="res://animations/tomato_spawn_animations/TOMATO0003.png" id="5_s13mo"]
+[ext_resource type="Texture2D" uid="uid://cyqxiljefdwwc" path="res://animations/tomato_spawn_animations/TOMATO0004.png" id="6_4xium"]
+[ext_resource type="Texture2D" uid="uid://g6gcq0w5vt5v" path="res://animations/tomato_spawn_animations/TOMATO0005.png" id="7_wa4s8"]
+[ext_resource type="Texture2D" uid="uid://ct0wjoas42j3n" path="res://animations/tomato_spawn_animations/TOMATO0006.png" id="8_r87ho"]
+[ext_resource type="Texture2D" uid="uid://5hd0yk51aoye" path="res://animations/tomato_spawn_animations/TOMATO0007.png" id="9_r4a5y"]
+[ext_resource type="Texture2D" uid="uid://dpvfyxb2jdlv1" path="res://animations/tomato_spawn_animations/TOMATO0008.png" id="10_oamqp"]
+[ext_resource type="Texture2D" uid="uid://c82nm1vtgkgsi" path="res://animations/tomato_spawn_animations/TOMATO0009.png" id="11_esdvq"]
+[ext_resource type="Texture2D" uid="uid://chic6238gcavk" path="res://animations/tomato_spawn_animations/TOMATO0010.png" id="12_mky1a"]
+[ext_resource type="Texture2D" uid="uid://bu15k8jfcmvk" path="res://animations/tomato_spawn_animations/TOMATO0011.png" id="13_4vwof"]
+[ext_resource type="Texture2D" uid="uid://briq8x18r3ovn" path="res://animations/tomato_spawn_animations/TOMATO0012.png" id="14_d2rvf"]
+[ext_resource type="Texture2D" uid="uid://btdt3flln74vh" path="res://animations/tomato_spawn_animations/TOMATO0013.png" id="15_i5ufx"]
+[ext_resource type="Texture2D" uid="uid://cdwco1vmj4siw" path="res://animations/tomato_spawn_animations/TOMATO0014.png" id="16_rxulw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t7e38"]
-radius = 2347.0237
-height = 6504.857
+radius = 207.4469
+height = 558.7733
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t7e38"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_gnycb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_p1vwv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_s13mo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_4xium")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_wa4s8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_r87ho")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_r4a5y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_oamqp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_esdvq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_mky1a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_4vwof")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_d2rvf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_i5ufx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_rxulw")
+}],
+"loop": 0,
+"name": &"tomato_spawn",
+"speed": 24.0
+}]
 
 [node name="Tomato" type="Node2D" unique_id=1102157171]
 scale = Vector2(2.725, 2.725)
 script = ExtResource("2_pjj58")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=856503776]
-position = Vector2(0.00048822165, -0.00048744678)
-scale = Vector2(2.3565, 2.3565)
-texture = ExtResource("1_tsxsy")
+visible = false
+texture = ExtResource("16_rxulw")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=416721658]
 position = Vector2(-7, 6)
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1285421982]
-position = Vector2(7, 355.47)
+position = Vector2(17.27523, 14.917427)
 rotation = -1.5746015
 scale = Vector2(0.9999989, 1)
 shape = SubResource("CapsuleShape2D_t7e38")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=26991863]
+position = Vector2(-10.27523, -164.40369)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_t7e38")
+animation = &"tomato_spawn"
+frame = 13
+frame_progress = 1.0
