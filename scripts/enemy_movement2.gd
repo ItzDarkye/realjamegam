@@ -9,7 +9,7 @@ var instance=preload("res://scenes/arrow.tscn")
 @onready var timer_for_arrows=$Timer
 var timer_is_stopped=true
 func check_if_dead():
-	if health==0 or get_parent().round_is_termineted==true:
+	if health<=0 or get_parent().round_is_termineted==true:
 		if health==0:
 			get_parent().enemy_killed+=1
 		queue_free()
