@@ -3,11 +3,22 @@ extends Node2D
 var round_is_termineted=false
 var instance1=preload("res://scenes/enemy.tscn")
 var instance2=preload("res://scenes/enemy2.tscn")
+var boss_instance=preload("res://scenes/boss.tscn")
 var enemy_killed=0
+var var_for_boss=0
+var boss_defeated=false
+@export var spawn_position_boss:Vector2
 var round_number:int
 @onready var timer_for_monsters=$Timer
 @export var spawn_points:Array[Vector2]
 
+
+func spawn_boss():
+	var boss=boss_instance.instantiate()
+	boss.position=spawn_position_boss
+	boss.scale=Vector2(10,10)
+	add_child(boss)
+	
 func end_round():
 	var file=FileAccess.open("res://scripts/round_number.txt",FileAccess.WRITE)
 	file.store_string(str(round_number+1))
@@ -47,8 +58,9 @@ func spawn_a_monster():
 func set_timer():
 	var file=FileAccess.open("res://scripts/round_number.txt",FileAccess.READ)
 	round_number=int(file.get_as_text())
-	timer_for_monsters.wait_time=6/round_number
-	timer_for_monsters.start()
+	if round_number<4:
+		timer_for_monsters.wait_time=6/round_number
+		timer_for_monsters.start()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -58,12 +70,17 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	#print(enemy_killed)
-	if enemy_killed==(4*round_number) and not round_is_termineted:
-		print("hi")
-		round_is_termineted=true
-		end_round()
-
+	if round_number<4:
+		if enemy_killed==(4*round_number) and not round_is_termineted:
+			print("hi")
+			round_is_termineted=true
+			end_round()
+	else:
+		if var_for_boss==0:
+			var_for_boss+=1
+			spawn_boss()
+		if boss_defeated:
+			print("Victory")
 func _on_timer_timeout() -> void:
 	spawn_a_monster() # Replace with function body.
 

@@ -10,7 +10,7 @@ var health=4
 
 
 func check_if_dead():
-	if health==0 or get_parent().round_is_termineted==true:
+	if health<=0 or get_parent().round_is_termineted==true:
 		if health==0:
 			get_parent().enemy_killed+=1
 		queue_free()
@@ -62,3 +62,6 @@ func _on_area_2d_body_entered(something) -> void:
 func _on_area_2d_body_exited(something) -> void:
 	if something.name=="player":
 		is_in_view=false
+
+
+# Replace with function body.

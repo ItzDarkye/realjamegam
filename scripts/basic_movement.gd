@@ -67,7 +67,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	print(position)
+	#print(position)
 	get_inputs()
 	check_contact_with_enemy()
 	move_and_slide()
@@ -95,7 +95,10 @@ func _on_hit_box_body_entered(body: CharacterBody2D) -> void:
 	if body.type_of_thing=="BAD": 
 		if body.health:
 			body.health-=damage
-			body.knockback()
+			if body.name!="boss":
+				body.knockback()
+			else:
+				body.is_hurt=true
 			print(body.health)
 
 

@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://dtcv8j40ke5on"]
+
+[ext_resource type="Script" uid="uid://c6svad86hw6x4" path="res://scripts/boss_attack.gd" id="1_y7i8w"]
+[ext_resource type="Texture2D" uid="uid://ccx0w400ti2ia" path="res://icon.svg" id="2_4s766"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3ai1g"]
+radius = 39.051247
+
+[node name="Area2D" type="Area2D" unique_id=1758755508]
+collision_layer = 4
+monitoring = false
+script = ExtResource("1_y7i8w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2049609661]
+shape = SubResource("CircleShape2D_3ai1g")
+
+[node name="Timer" type="Timer" parent="." unique_id=924121231]
+one_shot = true
+autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2147310278]
+position = Vector2(3.8146973e-06, -0.9999924)
+scale = Vector2(0.5859375, 0.47656244)
+texture = ExtResource("2_4s766")
+
+[node name="Timer2" type="Timer" parent="." unique_id=113253674]
+wait_time = 1.2999999999999998
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
