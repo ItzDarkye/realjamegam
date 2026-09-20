@@ -98,7 +98,8 @@ texture = ExtResource("9_85g3d")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1584414657]
 disable_mode = 2
-collision_layer = 255
+collision_layer = 33023
+collision_mask = 32769
 physics_material_override = SubResource("PhysicsMaterial_e7p64")
 
 [node name="TomatoSpawner" parent="StaticBody2D" unique_id=1569575785 node_paths=PackedStringArray("box") instance=ExtResource("7_o6xl0")]
