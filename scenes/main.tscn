@@ -30,6 +30,9 @@ script = ExtResource("1_o6xl0")
 spawn_position_boss = Vector2(0, -2000)
 spawn_points = Array[Vector2]([Vector2(0, -2002.64), Vector2(3000, -2002), Vector2(-3000, -2002)])
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1957281323]
+max_distance = 140000.0
+
 [node name="player" parent="." unique_id=501528392 instance=ExtResource("1_o5qli")]
 visibility_layer = 515
 texture_filter = 1
@@ -50,6 +53,7 @@ dead_zone_height = 0.063
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1381749005]
 physics_interpolation_mode = 1
+top_level = true
 zoom = Vector2(0.029, 0.029)
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D" unique_id=1222323502]

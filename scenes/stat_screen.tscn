@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://bqfo18t3u5x6j" path="res://sprites/aaef0dd7bf68fc14ea9de7137fbeaec6.png" id="13_u0fr0"]
 [ext_resource type="Texture2D" uid="uid://bpnq155vgkldw" path="res://sprites/MENU/fcb7a8d69ea6ad316210f82c23f1d089 (1).png" id="14_j8s6f"]
 [ext_resource type="Texture2D" uid="uid://cf2bxl75bm5k" path="res://sprites/[CITYPNG.COM]Fresh Red Tomato Slice HD Transparent Background - 2500x2500.png" id="15_3pu73"]
+[ext_resource type="AudioStream" uid="uid://dif2fdwr6qlev" path="res://sounds/menu.mp3" id="18_3pu73"]
 
 [node name="Node2D" type="Node2D" unique_id=943329975]
 script = ExtResource("1_gyuhm")
@@ -121,6 +122,11 @@ texture = ExtResource("9_c7rj2")
 visible = false
 position = Vector2(174, 568)
 texture = ExtResource("9_ekh1h")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=2041918039]
+stream = ExtResource("18_3pu73")
+autoplay = true
+parameters/looping = true
 
 [connection signal="pressed" from="HUD2/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="HUD2/NextButton" to="." method="_on_next_button_pressed"]

@@ -53,16 +53,17 @@ script = ExtResource("4_qnbj4")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=647187924]
 position = Vector2(50, 0)
+scale = Vector2(5, 5)
 collision_layer = 4
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=846102722]
-position = Vector2(6, 3.5)
+position = Vector2(49.25, 2)
 shape = SubResource("RectangleShape2D_mvhug")
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=994659536]
 visible = false
-position = Vector2(6, 3)
+position = Vector2(49.25, 2.25)
 scale = Vector2(0.57812506, 0.123046756)
 texture = ExtResource("5_r3bxh")
 

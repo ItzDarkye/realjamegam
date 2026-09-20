@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bj5whipvkrxnt" path="res://sprites/MENU/buttons/ExitMAIN2.png" id="6_flqon"]
 [ext_resource type="Texture2D" uid="uid://by3ccrirtoilu" path="res://sprites/MENU/buttons/ExitMAIN.png" id="7_rcqid"]
 [ext_resource type="PackedScene" uid="uid://c684k0bj7r3jo" path="res://scenes/fade_transition.tscn" id="8_tbmy8"]
+[ext_resource type="AudioStream" uid="uid://dif2fdwr6qlev" path="res://sounds/menu.mp3" id="9_5dd4i"]
 [ext_resource type="Texture2D" uid="uid://cd1r1bvh5wp3s" path="res://sprites/IMG_1009.png" id="9_jk1qb"]
 [ext_resource type="Texture2D" uid="uid://bels82l1ykri8" path="res://sprites/MENU/F26A5A.png" id="10_1ajci"]
 
@@ -82,6 +83,11 @@ region_rect = Rect2(1267, 961, 464, 664)
 [node name="F26a5a" type="Sprite2D" parent="." unique_id=1170645172]
 position = Vector2(217.19456, 96)
 texture = ExtResource("10_1ajci")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1417000585]
+stream = ExtResource("9_5dd4i")
+autoplay = true
+parameters/looping = true
 
 [connection signal="pressed" from="Button_Manager/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Button_Manager/Exit" to="." method="_on_exit_pressed"]
