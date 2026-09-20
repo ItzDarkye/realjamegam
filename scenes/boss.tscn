@@ -4,9 +4,13 @@
 [ext_resource type="Script" uid="uid://deaiuxqspk15i" path="res://scripts/boss_movement.gd" id="3_qnbj4"]
 [ext_resource type="Script" uid="uid://bx4p0g2645phl" path="res://scripts/tomato_collector.gd" id="3_r3bxh"]
 [ext_resource type="Script" uid="uid://cuqvr7k37ll5k" path="res://scripts/boss_bar.gd" id="4_qnbj4"]
+[ext_resource type="Texture2D" uid="uid://ccx0w400ti2ia" path="res://icon.svg" id="5_r3bxh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nhenn"]
 size = Vector2(291, 300)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mvhug"]
+size = Vector2(74, 17)
 
 [node name="boss" type="CharacterBody2D" unique_id=2026744539]
 z_index = 20
@@ -47,4 +51,25 @@ offset_bottom = 625.0
 show_percentage = false
 script = ExtResource("4_qnbj4")
 
+[node name="Area2D" type="Area2D" parent="." unique_id=647187924]
+position = Vector2(50, 0)
+collision_layer = 4
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=846102722]
+position = Vector2(6, 3.5)
+shape = SubResource("RectangleShape2D_mvhug")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=994659536]
+visible = false
+position = Vector2(6, 3)
+scale = Vector2(0.57812506, 0.123046756)
+texture = ExtResource("5_r3bxh")
+
+[node name="Mace_timer" type="Timer" parent="." unique_id=1972655593]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Mace_timer" to="." method="_on_mace_timer_timeout"]

@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cx0rlcnnvkn3e"]
+
+[node name="Node2D" type="Node2D" unique_id=180939707]
+
+[node name="Label" type="Label" parent="." unique_id=75618355]
+offset_left = -141.0
+offset_top = -265.0
+offset_right = 135.0
+offset_bottom = -58.0
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=573642214]

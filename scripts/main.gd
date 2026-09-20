@@ -1,6 +1,7 @@
 extends Node2D
 
 var round_is_termineted=false
+@onready var player=$player
 var instance1=preload("res://scenes/enemy.tscn")
 var instance2=preload("res://scenes/enemy2.tscn")
 var boss_instance=preload("res://scenes/boss.tscn")
@@ -41,6 +42,7 @@ func spawn_player():
 	player.damage+=int(list_of_upgrades[1])
 	add_child(player)
 func spawn_a_monster():
+	
 	var get_random_position=randi_range(0,spawn_points.size()-1)
 	var get_random_enemy=randi_range(1,2)
 	
@@ -61,7 +63,13 @@ func set_timer():
 	if round_number<4:
 		timer_for_monsters.wait_time=6/round_number
 		timer_for_monsters.start()
-
+func death():
+	player.queue_free()
+	var file=FileAccess.open("res://scripts/round_number.txt",FileAccess.WRITE)
+	file.store_string("1")
+	var files=FileAccess.open("res://scripts/upgrades.txt",FileAccess.WRITE)
+	files.store_string("0,0,0")
+	get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	set_timer()
@@ -70,6 +78,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if not player.health.is_alive:
+		death()
 	if round_number<4:
 		if enemy_killed==(4*round_number) and not round_is_termineted:
 			print("hi")
