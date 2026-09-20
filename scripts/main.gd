@@ -1,5 +1,6 @@
 extends Node2D
 
+@onready var speaker=$AudioStreamPlayer2D
 var round_is_termineted=false
 @onready var player=$player
 var instance1=preload("res://scenes/enemy.tscn")
@@ -61,8 +62,15 @@ func set_timer():
 	var file=FileAccess.open("res://scripts/round_number.txt",FileAccess.READ)
 	round_number=int(file.get_as_text())
 	if round_number<4:
+		speaker.stream=preload("res://sounds/arena.mp3")
+		speaker.play()
+		speaker.stream.loop=true
 		timer_for_monsters.wait_time=6/round_number
 		timer_for_monsters.start()
+	else:
+		speaker.stream=preload("res://sounds/Boss_Fight.mp3")
+		speaker.play()
+		speaker.stream.loop=true
 func death():
 	player.queue_free()
 	var file=FileAccess.open("res://scripts/round_number.txt",FileAccess.WRITE)
@@ -72,12 +80,15 @@ func death():
 	get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
 	set_timer()
 	#spawn_player()
 	$CanvasLayer/ColorRect/AnimationPlayer.play("fade_out")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	
+	
 	if not player.health.is_alive:
 		death()
 	if round_number<4:
