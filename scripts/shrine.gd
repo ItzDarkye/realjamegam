@@ -2,6 +2,7 @@ extends Node2D
 
 var offeredTomatoes = 0
 @onready var area = $Area2D
+@onready var tomatoCount = $OfferedTomatoCount
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -17,5 +18,6 @@ func _on_body_entered(body : Node2D) -> void:
 	if body is Player:
 		var receivedTomatoes = body.tomato_collector.offer_tomatoes_in_shrine()
 		offeredTomatoes += receivedTomatoes
+		tomatoCount.text = str(offeredTomatoes)
 		print("Shrine: received ", receivedTomatoes, " tomatoes")
 		print("Shrine: total tomatoes: ", offeredTomatoes)

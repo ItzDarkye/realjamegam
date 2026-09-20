@@ -27,6 +27,7 @@ func collect_a_tomato() -> void:
 func offer_tomatoes_in_shrine() -> int:
 	var offeredTomatoes = collectedTomatoes
 	collectedTomatoes = 0
+	tomato_collected.emit()
 	print(body, "Offered ", offeredTomatoes, " tomatoes!")
 	print("Number of tomatoes now: ", collectedTomatoes)
 	return offeredTomatoes
