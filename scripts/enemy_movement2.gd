@@ -23,8 +23,7 @@ func knockback():
 func check_collision_whit_player():
 	var collider=get_last_slide_collision()
 	if collider:
-		if collider.get_collider().name=="player":
-			
+		if collider.get_collider() != null && collider.get_collider().name=="player":
 			collider.get_collider().contact_enemy=true
 			collider.get_collider().bounce_velocity=-(global_position-collider.get_collider().global_position).normalized()*5000
 func shoot_player():
