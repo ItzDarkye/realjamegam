@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://c3jetan4t48mg"]
+
+[ext_resource type="Texture2D" uid="uid://cfch6chc4b28x" path="res://sprites/New Piskel-1.png (3).png" id="2_jncid"]
+[ext_resource type="Script" uid="uid://deaiuxqspk15i" path="res://scripts/boss_movement.gd" id="3_qnbj4"]
+[ext_resource type="Script" uid="uid://bx4p0g2645phl" path="res://scripts/tomato_collector.gd" id="3_r3bxh"]
+[ext_resource type="Script" uid="uid://cuqvr7k37ll5k" path="res://scripts/boss_bar.gd" id="4_qnbj4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nhenn"]
+size = Vector2(20, 21)
+
+[node name="boss" type="CharacterBody2D" unique_id=2026744539]
+collision_layer = 2
+platform_on_leave = 2
+platform_floor_layers = 4294967294
+script = ExtResource("3_qnbj4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=275307339]
+texture = ExtResource("2_jncid")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=307515526]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_nhenn")
+
+[node name="TomatoCollector" type="Node2D" parent="." unique_id=1696765205 node_paths=PackedStringArray("body")]
+script = ExtResource("3_r3bxh")
+body = NodePath("..")
+metadata/_custom_type_script = "uid://bx4p0g2645phl"
+
+[node name="Timer" type="Timer" parent="." unique_id=388620145]
+wait_time = 2.0
+autostart = true
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1163826686]
+self_modulate = Color(0.35686275, 0.07058824, 0, 0.7294118)
+offset_left = -66.0
+offset_top = -54.0
+offset_right = 65.0
+offset_bottom = -27.0
+show_percentage = false
+script = ExtResource("4_qnbj4")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

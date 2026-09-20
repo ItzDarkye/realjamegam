@@ -19,6 +19,7 @@ size = Vector2(162, 299.5)
 
 [node name="Node2D" type="Node2D" unique_id=1927999117]
 script = ExtResource("1_o6xl0")
+spawn_position_boss = Vector2(0, -2000)
 spawn_points = Array[Vector2]([Vector2(0, -2002)])
 
 [node name="player" parent="." unique_id=501528392 instance=ExtResource("1_o5qli")]
