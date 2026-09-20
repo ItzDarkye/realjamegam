@@ -64,8 +64,9 @@ func position_the_hitbox() -> void:
 	
 func check_contact_with_enemy():
 	if contact_enemy:
+		print("hi")
 		var tween=create_tween()
-		tween.tween_property(self,"position",bounce_velocity.normalized()*200+global_position,0.3)
+		tween.tween_property(self,"position",(bounce_velocity.normalized()*200+global_position),0.3)
 		#velocity=bounce_velocity
 		contact_enemy=false
 	
@@ -158,7 +159,7 @@ func _on_timer_timeout() -> void:
 func _on_hurt_box_body_entered(body: CharacterBody2D) -> void:
 	#print( body.type_of_thing)
 	if body.type_of_thing=="BAD" or body.type_of_thing=="ARROW":
-		#print(body.name) # Replace with function body.
+		
 		if body.type_of_thing=="ARROW":
 				body.queue_free()
 		if immortal_bar.value<=0:
