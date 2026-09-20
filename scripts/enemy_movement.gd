@@ -48,21 +48,6 @@ func check_collision_whit_player():
 	if collider:
 		if collider.get_collider().name=="player":
 			
-			if side:
-				pass
-				animated_sprite.play("attack_side_worm")
-				
-				
-			if front:
-				pass
-				animated_sprite.play("attack_front_worm")
-				
-				
-			if back:
-				animated_sprite.play("attack_back_worm")
-				
-			is_attacking=true
-			
 			collider.get_collider().contact_enemy=true
 			collider.get_collider().bounce_velocity=-(global_position-collider.get_collider().global_position).normalized()*5000
 func follow_player():
@@ -70,9 +55,7 @@ func follow_player():
 	velocity=vector_direction_player.normalized()*800
 	
 	if abs(velocity.x)>abs(velocity.y):
-		side=true
-		front=false
-		back=false
+		
 		if velocity.x<0:
 			animated_sprite.play("worm_animation")
 			animated_sprite.flip_h=false
@@ -81,14 +64,10 @@ func follow_player():
 			animated_sprite.play("worm_animation")
 	else:
 		if velocity.y>0:
-			front=true
-			back=false
-			side=false
+			
 			animated_sprite.play("front_walk_worm")
 		else:
-			back=true
-			front=false
-			side=false
+			
 			animated_sprite.play("back_walk_worm")
 
 func follow_tree():
